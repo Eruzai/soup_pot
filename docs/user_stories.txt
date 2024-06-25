@@ -1,22 +1,24 @@
 MVP
 As a visitor:
-  I want to be able to view recipes based on what ingredients I enter in the soup pot
+  I want to be able to generate recipes based on what ingredients I enter in the soup pot
 
 As a user:
   I want to be able to login and view my inventory of soup ingredients
   I want to be able to add ingredients to my inventory
   I want to be able to remove ingredients from my inventory
-  I want to be able to view recipes based on what ingredients I enter in the soup pot
-  I want to be able to save recipes to my account for future reference
+  I want to be able to edit saved recipes
+  I want to be able to write recipes and save them to my account
+  I want to be able to view recipes that I've saved
+  I want to view the history of recipes I've made
   I want to be able to remove recipes from my account
+  I want to be able to generate recipes based on what ingredients I enter in the soup pot
+  I want to be able to save recipes to my account for future reference
+  I want to be able to write reviews for recipes
+  I want to sort recipes by reviews, prep time, ingredients
 
 STRETCH
 As a user:
-  I want to be able to write recipes and save them to my account
-  I want to sort recipes by reviews, prep time, ingredients
   I want to filter out recipes(food allergies?)
-  I want to view the history of recipes I've made
-  I want to be able to write reviews for recipes
   I want to add friends
   I want to be able to suggest recipes to friends
   I want to organize soup potluck events with my friends
