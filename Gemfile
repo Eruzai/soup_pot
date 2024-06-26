@@ -29,6 +29,9 @@ gem "jbuilder"
 # Simplify API requests
 gem "rest-client"
 
+# Use ENV
+gem "dotenv-rails"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
