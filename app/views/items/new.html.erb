@@ -1,5 +1,9 @@
 <h1>New</h1>
 
+<% if @item.errors.any? %>
+  <%= @item.errors.full_messages %>
+<% end %>
+
 <%= form_for @item do |form| %>
 
   <%= form.label :name %>
@@ -7,8 +11,11 @@
 
   <%= form.label :quantity %>
   <%= form.text_field :quantity %>
-  
+
   <%= form.label :expiration_date %>
-  <%= form.text_field :expiration_date %>
+  <%= form.text_field :expiration_date, placeholder: "yyyy-mm-dd" %>
+
+  <%= form.submit %>
+
 
 <% end %>
