@@ -1,0 +1,10 @@
+<% if @json %>
+  <% @json['hits'].each do |recipe| %>
+    <div>
+    <%= recipe['recipe']['label'] %>
+    <img src=<%= recipe['recipe']['images']['THUMBNAIL']['url'] %> alt='food img'>
+    <%= recipe['recipe']['source'] %>
+    <a href=<%= recipe['recipe']['url'] %>>Recipe link!</a>
+    </div>
+  <% end %>
+<% end %>
