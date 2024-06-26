@@ -9,4 +9,7 @@ Rails.application.routes.draw do
 
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
+
+  get '/recipes' => 'recipe_api#show'
+  post '/recipes' => 'recipe_api#search'
 end
