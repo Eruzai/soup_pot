@@ -1,3 +1,27 @@
 <h1>Your Inventory</h1>
 
 <%= link_to 'NEW', new_item_path %>
+
+<table>
+
+  <thead>
+    <tr>
+      <td>Name</td>
+      <td>Quantity</td>
+      <td>Expiry</td>
+      <td>Edit/Delete</td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+    <tr>
+      <td><%= item.name %></td>
+      <td><%= item.quantity %></td>
+      <td><%= item.expiration_date %></td>
+      <td></td>
+    </tr>
+    <% end %>
+  </tbody>
+
+</table>
