@@ -2,7 +2,8 @@ class ItemsController < ApplicationController
 
   before_action :find_item, only: [:show, :edit, :update, :destroy]
   def index
-    @items = Item.all
+    @user = User.find (current_user.id)
+    @items = @user.items.all
   end
 
   def show
@@ -13,7 +14,8 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(item_params)
+    @user = User.find (current_user.id)
+    @item = @user.items.new(item_params)
 
     if @item.save
       redirect_to '/items', notice: 'CREATED'
