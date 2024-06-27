@@ -7,6 +7,21 @@ class RecipeApiController < ApplicationController
   def show
   end
 
+  def create
+    @user = User.find params[:id]
+    @recipe = @user.recipes.new(recipe_params)
+    
+    if @recipe.save
+      recipe_ingredients.each do |item|
+        @ingredient = @recipe.ingredients.new(item: item)
+        @ingredient.save
+      end
+      redirect_to '/', notice: 'Recipe information and ingredients saved!'
+    else
+      raise 'Recipe failed to save!'
+    end
+  end
+
   def search
     app_id = ENV.fetch('EDAMAM_APPLICATION_ID')
     key = ENV.fetch('EDAMAM_APPLICATION_KEY')
@@ -38,4 +53,28 @@ class RecipeApiController < ApplicationController
       :ingredient_10,
     )
   end
+
+  def recipe_ingredients
+    ingredients = params[:ingredients].keys.join("").split('", "')
+  end
+
+  def recipe_params
+    params.permit(
+      :name,
+      :description,
+      :source,
+      :recipe_url,
+      :image,
+      :cooking_time,
+    )
+    return {
+      name: params[:name].keys.join(""),
+      description: params[:description].keys.join(""),
+      source: params[:source].keys.join(""),
+      recipe_url: params[:recipe_url].keys.join(""),
+      image: params[:image].keys.join(""),
+      cooking_time: params[:cooking_time].keys.join("")
+    }
+  end
+
 end
