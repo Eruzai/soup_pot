@@ -14,4 +14,6 @@ Rails.application.routes.draw do
 
   get '/recipes' => 'recipe_api#show'
   post '/recipes' => 'recipe_api#search'
+  post '/recipes/:id' => 'recipe_api#create'
+
 end
