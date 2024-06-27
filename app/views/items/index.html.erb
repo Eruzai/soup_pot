@@ -16,10 +16,15 @@
   <tbody>
     <% @items.each do |item| %>
     <tr>
-      <td><%= item.name %></td>
+      <td><%= link_to item.name, item_path(item.id) %></td>
       <td><%= item.quantity %></td>
       <td><%= item.expiration_date %></td>
-      <td></td>
+      <td>
+        <%= link_to 'Edit', edit_item_path(item.id) %>
+      </td>
+      <td>
+        <%= link_to 'Delete', item_path(item.id), method: :delete, data: { confirm: 'Remove this item?' } %>
+      </td>
     </tr>
     <% end %>
   </tbody>
