@@ -2,10 +2,22 @@
   <% @json['hits'].each do |hit| %>
     <div>
     <%= hit['recipe']['label'] %>
-    <img src=<%= hit['recipe']['images']['THUMBNAIL']['url'] %> alt='food img'>
+    <img src=<%= hit['recipe']['image'] %> alt='food img' width='200' height='200'>
     <%= hit['recipe']['source'] %>
     <a href=<%= hit['recipe']['url'] %>>Recipe link!</a>
     <%= hit['recipe']['ingredientLines'] %>
     </div>
+    <% if current_user %>
+      <%= form_with url: "/recipes/#{current_user.id}", method: :post do |form| %>
+        <%= hidden_field :name, hit['recipe']['label'] %>
+        <%= hidden_field :image, hit['recipe']['image'] %>
+        <%= hidden_field :description, 'no description' %>
+        <%= hidden_field :cooking_time, "#{hit['recipe']['totalTime']} minutes" %>
+        <%= hidden_field :source, hit['recipe']['source'] %>
+        <%= hidden_field :recipe_url, hit['recipe']['url'] %>
+        <%= hidden_field :ingredients, hit['recipe']['ingredientLines'] %>
+        <%= form.submit "Save to My Recipe List", class: 'btn btn-primary' %>
+      <% end %>
+    <% end %>
   <% end %>
 <% end %>
