@@ -1,0 +1,32 @@
+<h1>Your Inventory</h1>
+
+<%= link_to 'NEW', new_item_path %>
+
+<table>
+
+  <thead>
+    <tr>
+      <td>Name</td>
+      <td>Quantity</td>
+      <td>Expiry</td>
+      <td>Edit/Delete</td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+    <tr>
+      <td><%= link_to item.name, item_path(item.id) %></td>
+      <td><%= item.quantity %></td>
+      <td><%= item.expiration_date %></td>
+      <td>
+        <%= link_to 'Edit', edit_item_path(item.id) %>
+      </td>
+      <td>
+        <%= link_to 'Delete', item_path(item.id), method: :delete, data: { confirm: 'Remove this item?' } %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+
+</table>
