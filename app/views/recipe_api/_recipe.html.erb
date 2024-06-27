@@ -1,10 +1,11 @@
 <% if @json %>
-  <% @json['hits'].each do |recipe| %>
+  <% @json['hits'].each do |hit| %>
     <div>
-    <%= recipe['recipe']['label'] %>
-    <img src=<%= recipe['recipe']['images']['THUMBNAIL']['url'] %> alt='food img'>
-    <%= recipe['recipe']['source'] %>
-    <a href=<%= recipe['recipe']['url'] %>>Recipe link!</a>
+    <%= hit['recipe']['label'] %>
+    <img src=<%= hit['recipe']['images']['THUMBNAIL']['url'] %> alt='food img'>
+    <%= hit['recipe']['source'] %>
+    <a href=<%= hit['recipe']['url'] %>>Recipe link!</a>
+    <%= hit['recipe']['ingredientLines'] %>
     </div>
   <% end %>
 <% end %>
