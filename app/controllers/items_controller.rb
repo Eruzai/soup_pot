@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
 
+  before_action :find_item, only: [:show, :edit, :update, :destroy]
   def index
     @items = Item.all
   end
@@ -15,7 +16,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
 
     if @item.save
-      redirect_to '/items', notice: 'CREATED!'
+      redirect_to '/items', notice: 'CREATED'
     else
       render :new
     end
@@ -25,9 +26,16 @@ class ItemsController < ApplicationController
   end
 
   def update
+    if @item.update(item_params)
+      redirect_to '/items', notice: 'EDITED'
+    else
+      render :new
+    end
   end
 
   def destroy
+    @item.destroy
+    redirect_to items_path, notice: 'DELETED!!!'
   end
 
   private
@@ -37,6 +45,6 @@ class ItemsController < ApplicationController
   end
 
   def find_item
-    @item = item.find_by(id: params[:id])
+    @item = Item.find(params[:id])
   end
 end
