@@ -1,5 +1,8 @@
 class User < ApplicationRecord
 
+  before_destroy :destroy_recipes
+  before_destroy :destroy_items
+
   has_secure_password
 
   has_many :recipes
@@ -19,6 +22,16 @@ class User < ApplicationRecord
     else
       return nil
     end
+  end
+
+  private
+
+  def destroy_recipes
+    self.recipes.destroy_all
+  end
+
+  def destroy_items
+    self.items.destroy_all
   end
 
 end
