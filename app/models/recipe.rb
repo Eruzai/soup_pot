@@ -7,8 +7,6 @@ class Recipe < ApplicationRecord
 
   validates :name, presence: true
   validates :description, presence: true
-  validates :source, presence: true
-  validates :recipe_url, presence: true
 
   private
 
