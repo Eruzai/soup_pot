@@ -1,53 +1,48 @@
+<button id="toggle-items">Close Fridge</button>
+<div id="items-list" class="hidden">
+  <p>
+    <% @items.each do |item| %>
+      <%= item.name %>
+    <% end %>
+  </p>
+</div>
+
 <%= form_with do |form| %>
-  <div class="form-group">
-    <%= form.label :ingredient_1 %>
-    <%= form.text_field :ingredient_1 %>
+<div class="control-group">
+  <%= form.label :ingredient_1 %>
+  <div class="controls">
+    <%= form.text_field :ingredient_1, id: 'ingredient-text-field' %>
   </div>
+</div>
 
-  <div class="form-group">
-    <%= form.label :ingredient_2 %>
-    <%= form.text_field :ingredient_2 %>
+<div class="control-group">
+  <%= form.label :ingredient_2 %>
+  <div class="controls">
+  <%= form.text_field :ingredient_2, id: 'ingredient-text-field' %>
   </div>
+</div>
 
-  <div class="form-group">
-    <%= form.label :ingredient_3 %>
-    <%= form.text_field :ingredient_3 %>
+<div class="control-group">
+  <%= form.label :ingredient_3 %>
+  <div class="controls">
+    <%= form.text_field :ingredient_3, id: 'ingredient-text-field' %>
   </div>
+</div>
 
-  <div class="form-group">
-    <%= form.label :ingredient_4 %>
-    <%= form.text_field :ingredient_4 %>
+<div class="control-group">
+  <%= form.label :ingredient_4 %>
+  <div class="controls">
+    <%= form.text_field :ingredient_4, id: 'ingredient-text-field' %>
   </div>
+</div>
 
-  <div class="form-group">
-    <%= form.label :ingredient_5 %>
-    <%= form.text_field :ingredient_5 %>
+<div class="control-group">
+  <%= form.label :ingredient_5 %>
+  <div class="controls">
+    <%= form.text_field :ingredient_5, id: 'ingredient-text-field' %>
   </div>
+</div>
 
-  <div class="form-group">
-    <%= form.label :ingredient_6 %>
-    <%= form.text_field :ingredient_6 %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :ingredient_7 %>
-    <%= form.text_field :ingredient_7 %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :ingredient_8 %>
-    <%= form.text_field :ingredient_8 %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :ingredient_9 %>
-    <%= form.text_field :ingredient_9 %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :ingredient_10 %>
-    <%= form.text_field :ingredient_10 %>
-  </div>
   <%= form.submit "Submit", class: 'btn btn-primary' %>
 <% end %>
 

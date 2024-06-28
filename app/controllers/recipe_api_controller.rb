@@ -5,12 +5,14 @@ class RecipeApiController < ApplicationController
   @json = nil
 
   def show
+    @user = User.find(current_user.id)
+    @items = @user.items.all
   end
 
   def create
     @user = User.find params[:id]
     @recipe = @user.recipes.new(recipe_params)
-    
+
     if @recipe.save
       recipe_ingredients.each do |item|
         @ingredient = @recipe.ingredients.new(item: item)
@@ -27,7 +29,7 @@ class RecipeApiController < ApplicationController
     key = ENV.fetch('EDAMAM_APPLICATION_KEY')
     response = RestClient.get("https://api.edamam.com/api/recipes/v2?type=public&q=#{ingredients_query}%20&app_id=#{app_id}&app_key=#{key}&dishType=Soup")
     @json = JSON.parse response
-    
+
     render :show
   end
 
