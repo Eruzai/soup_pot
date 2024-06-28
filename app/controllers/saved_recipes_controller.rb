@@ -1,6 +1,8 @@
 class SavedRecipesController < ApplicationController
 
   def show
+    @recipe = Recipe.find params[:id]
+    @ingredients = query_recipe_ingredients_to_string(@recipe)
   end
 
   def my_recipes
@@ -36,6 +38,19 @@ class SavedRecipesController < ApplicationController
   end
 
   def edit
+    @recipe = Recipe.find params[:id]
+    @recipe.update(recipe_params)
+
+    if @recipe.save
+      @recipe.ingredients.destroy_all
+      recipe_ingredients.each do |item|
+        @ingredient = @recipe.ingredients.new(item: item)
+        @ingredient.save
+      end
+      redirect_to '/my_recipes', notice: 'Recipe information and ingredients updated!'
+    else
+      raise 'Recipe failed to update!'
+    end
   end
 
   def destroy
@@ -46,6 +61,15 @@ class SavedRecipesController < ApplicationController
   end
 
   private
+
+  def query_recipe_ingredients_to_string(recipe)
+    @ingredients = recipe.ingredients.all
+    @list = []
+    @ingredients.each do |item| 
+      @list << item.item
+    end
+    @list = @list.join(',')
+  end
 
   def recipe_ingredients
     params[:ingredients].split(',')
