@@ -1,29 +1,31 @@
 <% @recipes.each do |recipe| %>
-  <%= recipe.name %>
-  <img src=<%= recipe.image %> alt='food img' width='200' height='200'>
-  <%= recipe.description %>
-  <%= recipe.cooking_time %>
-  <%= recipe.source %>
-  <% if recipe.recipe_url %>
-    <a href=<%= recipe.recipe_url %>>Recipe link!</a>
-  <% end %>
   <div>
-    List of ingredients:
-    <% recipe.ingredients.all.each do |ingredient| %>
-      <div>
-      <%= ingredient.item %>
-      </div>
+    <%= recipe.name %>
+    <img src=<%= recipe.image %> alt='food img' width='200' height='200'>
+    <%= recipe.description %>
+    <%= recipe.cooking_time %>
+    <%= recipe.source %>
+    <% if recipe.recipe_url %>
+      <a href=<%= recipe.recipe_url %>>Recipe link!</a>
+    <% end %>
+    <div>
+      List of ingredients:
+      <% recipe.ingredients.all.each do |ingredient| %>
+        <div>
+        <%= ingredient.item %>
+        </div>
+      <% end %>
+    </div>
+    <div>
+      <%= recipe.directions %>
+    </div>
+    <% if current_user.id == recipe.user_id %>
+      <% if !recipe.recipe_url %>
+        <%= link_to 'Edit', "/my_recipes/#{recipe.id}" %>
+      <% end %>
+      <%= link_to 'Delete', "/my_recipes/#{recipe.id}", method: :delete, data: { confirm: 'Delete this Recipe?' } %>
     <% end %>
   </div>
-  <div>
-    <%= recipe.directions %>
-  </div>
-  <% if current_user.id == recipe.user_id %>
-    <% if !recipe.recipe_url %>
-      <%= link_to 'Edit', "/my_recipes/#{recipe.id}" %>
-    <% end %>
-    <%= link_to 'Delete', "/my_recipes/#{recipe.id}", method: :delete, data: { confirm: 'Delete this Recipe?' } %>
-  <% end %>
 <% end %>
 <div>
   <% if @path == 'my_recipes' %>
