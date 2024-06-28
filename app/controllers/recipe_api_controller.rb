@@ -16,7 +16,7 @@ class RecipeApiController < ApplicationController
         @ingredient = @recipe.ingredients.new(item: item)
         @ingredient.save
       end
-      redirect_to '/', notice: 'Recipe information and ingredients saved!'
+      redirect_to '/my_recipes', notice: 'Recipe information and ingredients saved!'
     else
       raise 'Recipe failed to save!'
     end
@@ -73,7 +73,8 @@ class RecipeApiController < ApplicationController
       source: params[:source].keys.join(""),
       recipe_url: params[:recipe_url].keys.join(""),
       image: params[:image].keys.join(""),
-      cooking_time: params[:cooking_time].keys.join("")
+      cooking_time: params[:cooking_time].keys.join(""),
+      directions: 'Follow recipe link for cooking instructions.'
     }
   end
 
