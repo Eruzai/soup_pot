@@ -19,8 +19,10 @@
     <%= recipe.directions %>
   </div>
   <% if current_user.id == recipe.user_id %>
-    <%= link_to 'Edit', "/my_recipes/#{recipe.id}" %>
-    <%= link_to 'Delete', "/my_recipes/#{recipe.id}", method: :delete, data: { confirm: 'Remove this Recipe?' } %>
+    <% if !recipe.recipe_url %>
+      <%= link_to 'Edit', "/my_recipes/#{recipe.id}" %>
+    <% end %>
+    <%= link_to 'Delete', "/my_recipes/#{recipe.id}", method: :delete, data: { confirm: 'Delete this Recipe?' } %>
   <% end %>
 <% end %>
 <div>
