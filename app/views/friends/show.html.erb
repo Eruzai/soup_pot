@@ -1,3 +1,23 @@
+<%= form_with url: '/find_friends', method: :get do |form| %>
+  <%= form.label :first_name %>
+  <%= form.text_field :first_name %>
+
+  <%= form.label :last_name %>
+  <%= form.text_field :last_name %>
+
+  <%= form.submit "Search" %>
+<% end %>
+
+<p> Search Results: </p>
+<% @search_results.each do |user| %>
+  <div>
+    <%= user.profile_img %>
+    <%= user.first_name %>
+    <%= user.last_name %>
+    <%= link_to 'Send Friend Request', "/find_friends/#{user.id}", method: :post %>
+  </div>
+<% end %>
+
 <p> My Friends: </p>
 <% @friends.each do |friend| %>
   <div>
