@@ -5,8 +5,10 @@ class RecipeApiController < ApplicationController
   @json = nil
 
   def show
-    @user = User.find(current_user.id)
-    @items = @user.items.all
+    if current_user
+      @user = User.find(current_user.id)
+      @items = @user.items.all
+    end
   end
 
   def create
