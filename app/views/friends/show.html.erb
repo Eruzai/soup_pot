@@ -34,7 +34,7 @@
     <%= user.profile_img %>
     <%= user.first_name %>
     <%= user.last_name %>
-    <%= link_to 'Remove Request', "/find_friends/#{user.id}", method: :delete, data: { confirm: 'Remove this Request?' } %>
+    <%= link_to 'Cancel Request', "/find_friends/#{user.id}", method: :delete, data: { confirm: 'Remove this Request?' } %>
   </div>
 <% end %>
 
@@ -45,6 +45,6 @@
     <%= user.first_name %>
     <%= user.last_name %>
     <%= link_to 'Accept Request', "/find_friends/#{user.id}", method: :patch %>
-    <%= link_to 'Remove Request', "/find_friends/#{user.id}", method: :delete, data: { confirm: 'Remove this Request?' } %>
+    <%= link_to 'Decline Request', "/find_friends/#{user.id}", method: :delete, data: { confirm: 'Are you sure that you want to decline this request?' } %>
   </div>
 <% end %>
