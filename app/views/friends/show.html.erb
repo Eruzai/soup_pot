@@ -1,0 +1,50 @@
+<%= form_with url: '/find_friends', method: :get do |form| %>
+  <%= form.label :first_name %>
+  <%= form.text_field :first_name %>
+
+  <%= form.label :last_name %>
+  <%= form.text_field :last_name %>
+
+  <%= form.submit "Search" %>
+<% end %>
+
+<p> Search Results: </p>
+<% @search_results.each do |user| %>
+  <div>
+    <%= user.profile_img %>
+    <%= user.first_name %>
+    <%= user.last_name %>
+    <%= link_to 'Send Friend Request', "/find_friends/#{user.id}", method: :post %>
+  </div>
+<% end %>
+
+<p> My Friends: </p>
+<% @friends.each do |friend| %>
+  <div>
+    <%= friend.profile_img %>
+    <%= friend.first_name %>
+    <%= friend.last_name %>
+    <%= link_to 'Remove Friend', "/find_friends/#{friend.id}", method: :delete, data: { confirm: 'Remove this Friend?' } %>
+  </div>
+<% end %>
+
+<p> Sent Requests: </p>
+<% @sent_requests.each do |user| %>
+  <div>
+    <%= user.profile_img %>
+    <%= user.first_name %>
+    <%= user.last_name %>
+    <%= link_to 'Cancel Request', "/find_friends/#{user.id}", method: :delete, data: { confirm: 'Remove this Request?' } %>
+  </div>
+<% end %>
+
+<p> Recieved Requests: </p>
+<% @recieved_requests.each do |user| %>
+  <div>
+    <%= user.profile_img %>
+    <%= user.first_name %>
+    <%= user.last_name %>
+    <%= link_to 'Accept Request', "/find_friends/#{user.id}", method: :patch %>
+    <%= link_to 'Decline Request', "/find_friends/#{user.id}", method: :delete, data: { confirm: 'Are you sure that you want to decline this request?' } %>
+  </div>
+<% end %>

@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_28_181525) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_02_025818) do
+  create_table "friends", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "friend_id", null: false
+    t.boolean "pending", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["friend_id"], name: "index_friends_on_friend_id"
+    t.index ["user_id"], name: "index_friends_on_user_id"
+  end
+
   create_table "ingredients", force: :cascade do |t|
     t.integer "recipe_id"
     t.string "item"
@@ -53,6 +63,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_28_181525) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "friends", "users"
+  add_foreign_key "friends", "users", column: "friend_id"
   add_foreign_key "ingredients", "recipes"
   add_foreign_key "items", "users"
   add_foreign_key "recipes", "users"
