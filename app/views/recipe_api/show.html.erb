@@ -1,13 +1,15 @@
-<button id="toggle-items">Open Fridge</button>
-<div id="items-list" class="hidden">
-  <p>
-    <% if @items.present? %>
-      <% @items.each do |item| %>
-        <%= item.name %>
+<% if current_user %>
+  <button id="toggle-items">Open Fridge</button>
+  <div id="items-list" class="hidden">
+    <p>
+      <% if @items.present? %>
+        <% @items.each do |item| %>
+          <%= item.name %>
+        <% end %>
       <% end %>
-    <% end %>
-  </p>
-</div>
+    </p>
+  </div>
+<% end %>
 
 <%= form_with do |form| %>
   <div class="control-group">
