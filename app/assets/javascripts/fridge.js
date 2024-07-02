@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('turbolinks:load', () => {
   const toggleButton = document.getElementById('toggle-items');
   const itemsList = document.getElementById('items-list');
 
