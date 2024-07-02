@@ -1,0 +1,26 @@
+<p> My Friends: </p>
+<% @friends.each do |friend| %>
+  <div>
+    <%= friend.profile_img %>
+    <%= friend.first_name %>
+    <%= friend.last_name %>
+  </div>
+<% end %>
+
+<p> Sent Requests: </p>
+<% @sent_requests.each do |user| %>
+  <div>
+    <%= user.profile_img %>
+    <%= user.first_name %>
+    <%= user.last_name %>
+  </div>
+<% end %>
+
+<p> Recieved Requests: </p>
+<% @recieved_requests.each do |user| %>
+  <div>
+    <%= user.profile_img %>
+    <%= user.first_name %>
+    <%= user.last_name %>
+  </div>
+<% end %>
