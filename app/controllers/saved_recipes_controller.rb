@@ -12,12 +12,12 @@ class SavedRecipesController < ApplicationController
     render '/saved_recipes/index'
   end
 
-  # def friends_recipes
-  #   @user = User.find (current_user.id)
-  #   @friends = @user.friends.all
-  #   @recipes = @friends.each do |friend| friend.recipes.all
-  #   render '/saved_recipes/index'
-  # end
+  def friends_recipes
+    @user = User.find (current_user.id)
+    @friends = @user.friends.where(pending: false).map(&:friend) + @user.inverse_friends.where(pending: false).map(&:user)
+    @recipes = @friends.flat_map(&:recipes)
+    render '/saved_recipes/index'
+  end
 
   def new
   end
