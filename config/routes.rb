@@ -25,5 +25,8 @@ Rails.application.routes.draw do
   get '/friends_recipes' => 'saved_recipes#friends_recipes'
 
   get '/find_friends' => 'friends#show'
-
+  get '/find_friends/:id' => 'friends#send_request'
+  delete '/find_friends/:id' => 'friends#destroy'
+  patch '/find_friends/:id' => 'friends#accept_request'
+  
 end
