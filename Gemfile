@@ -47,10 +47,14 @@ gem "tzinfo-data", platforms: %i[ mswin mswin64 mingw x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
-# OpenAi
-gem "ruby-openai"
-
 gem 'turbolinks'
+
+# Use SASS
+gem 'sass-rails'
+
+gem 'bootstrap'
+gem 'font-awesome-rails'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
