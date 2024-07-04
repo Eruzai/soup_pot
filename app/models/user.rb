@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :items
   has_many :friends, class_name: 'Friend', foreign_key: 'user_id'
   has_many :inverse_friends, class_name: 'Friend', foreign_key: 'friend_id'
+  has_many :reviews
   
   validates :first_name, presence: true
   validates :last_name, presence: true
