@@ -31,4 +31,6 @@ Rails.application.routes.draw do
   resources :recipes do
     resources :reviews, only: [:create, :destroy, :edit, :update]
   end
+
+  post '/my_recipes/create' => 'saved_recipes#create'
 end
