@@ -4,7 +4,7 @@
     <%= hit['recipe']['label'] %>
     <img src=<%= hit['recipe']['image'] %> alt='food img' width='200' height='200'>
     <%= hit['recipe']['source'] %>
-    <a href=<%= hit['recipe']['url'] %>>Recipe link!</a>
+    <p> <%= link_to 'Recipe Link', "#{hit['recipe']['url']}", target: '_blank' %> </p>
     <%= hit['recipe']['ingredientLines'] %>
     </div>
     <% if current_user %>

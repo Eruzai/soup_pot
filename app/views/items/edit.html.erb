@@ -1,21 +1,23 @@
-<h1>Edit</h1>
+<body class="edit-item">
 
-<% if @item.errors.any? %>
-  <%= @item.errors.full_messages %>
-<% end %>
+  <header class="page-header">
+    <h1>Alter the fields below to edit your fridge item</h1>
+  </header>
 
-<%= form_for @item do |form| %>
-
-  <%= form.label :name %>
-  <%= form.text_field :name %>
-
-  <%= form.label :quantity %>
-  <%= form.text_field :quantity %>
-
-  <%= form.label :expiration_date %>
-  <%= form.text_field :expiration_date, placeholder: "yyyy-mm-dd" %>
-
-  <%= form.submit %>
-
-
-<% end %>
+  <div class="form">
+    <%= form_for @item do |form| %>
+    
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    
+      <%= form.label :quantity %>
+      <%= form.text_field :quantity %>
+    
+      <%= form.label :expiration_date %>
+      <%= form.text_field :expiration_date, placeholder: "yyyy-mm-dd" %>
+    
+      <%= form.submit %>
+    
+    <% end %>
+  </div>
+</body>
