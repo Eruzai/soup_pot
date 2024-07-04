@@ -1,22 +1,25 @@
 class SavedRecipesController < ApplicationController
 
   def show
+    @user = current_user
     @recipe = Recipe.find params[:id]
     @ingredients = query_recipe_ingredients_to_string(@recipe)
+    @review = @recipe.reviews.build
+    @reviews = @recipe.reviews
   end
 
-  def my_recipes
+  def index
     @path = 'my_recipes'
     @user = User.find (current_user.id)
     @recipes = @user.recipes.all
-    render '/saved_recipes/index'
+    render :index
   end
 
   def friends_recipes
     @user = User.find (current_user.id)
     @friends = @user.friends.where(pending: false).map(&:friend) + @user.inverse_friends.where(pending: false).map(&:user)
     @recipes = @friends.flat_map(&:recipes)
-    render '/saved_recipes/index'
+    render :index
   end
 
   def new
@@ -39,9 +42,12 @@ class SavedRecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find params[:id]
-    @recipe.update(recipe_params)
+  end
 
-    if @recipe.save
+  def update
+    @recipe = Recipe.find params[:id]
+
+    if @recipe.update(recipe_params)
       @recipe.ingredients.destroy_all
       recipe_ingredients.each do |item|
         @ingredient = @recipe.ingredients.new(item: item)
@@ -49,7 +55,7 @@ class SavedRecipesController < ApplicationController
       end
       redirect_to '/my_recipes', notice: 'Recipe information and ingredients updated!'
     else
-      raise 'Recipe failed to update!'
+      render :edit
     end
   end
 
@@ -65,7 +71,7 @@ class SavedRecipesController < ApplicationController
   def query_recipe_ingredients_to_string(recipe)
     @ingredients = recipe.ingredients.all
     @list = []
-    @ingredients.each do |item| 
+    @ingredients.each do |item|
       @list << item.item
     end
     @list = @list.join(',')
