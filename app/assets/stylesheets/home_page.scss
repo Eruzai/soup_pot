@@ -1,26 +1,18 @@
 .home-page {
   background-image: url('point3d-commercial-imaging-ltd-0dj9V9s-R9c-unsplash.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-color: #050505;
   
-
   h1 {
-    font-size: 80px;
+    font-size: 3.5em;
   }
 
   h3 {
-    font-size: 50px;
-  }
-
-  a {
-    color: white;
-    text-decoration: none;
+    font-size: 2.5em;
   }
 
   .links-container {
     display: flex;
-    flex-direction: row;
+    margin-top: 250px;
+    width: 80%;
   }
 
   .container {
@@ -28,7 +20,6 @@
     border-radius: 15px;
     width: fit-content;
     font-size: 2em;
-    color: white;
     transition: transform 0.3s ease;
   }
 
@@ -36,5 +27,4 @@
     transform: scale(1.05);
     text-decoration: underline;
   }
-
 }

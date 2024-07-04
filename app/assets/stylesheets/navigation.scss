@@ -1,16 +1,17 @@
 .navbar {
-  background-color: #333;
+  background-color: rgba(0, 0, 0, 0.7);
   overflow: hidden;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 
 .navbar-logo h1 {
   margin: 0;
-  font-size: 24px;
+  font-size: 4em;
 }
 
 .navbar-logo h1 a {
@@ -19,7 +20,7 @@
 }
 
 .navbar-logo h1 a:hover {
-  color: #f2f2f2;
+  text-decoration: underline;
 }
 
 

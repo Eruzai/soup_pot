@@ -1,55 +1,59 @@
-<% if current_user %>
-  <button id="toggle-items">Open Fridge</button>
-  <div id="items-list" class="hidden">
-    <p>
-      <% if @items.present? %>
-        <% @items.each do |item| %>
-          <%= item.name %>
+<body class="soup-api">
+  <% if current_user %>
+    <button id="toggle-items">Open Fridge</button>
+    <div id="items-list" class="hidden">
+      <p>
+        <% if @items.present? %>
+          <% @items.each do |item| %>
+            <%= item.name %>
+          <% end %>
         <% end %>
-      <% end %>
-    </p>
-  </div>
-<% end %>
-
-<%= form_with do |form| %>
-  <div class="control-group">
-  <%= form.label :ingredient_1 %>
-    <div class="controls">
-      <%= form.text_field :ingredient_1, id: 'ingredient-text-field' %>
+      </p>
     </div>
+  <% end %>
+  
+  <div class="form">
+    <%= form_with do |form| %>
+      <div class="control-group">
+      <%= form.label :ingredient_1 %>
+        <div class="controls">
+          <%= form.text_field :ingredient_1, id: 'ingredient-text-field' %>
+        </div>
+      </div>
+    
+      <div class="control-group">
+      <%= form.label :ingredient_2 %>
+        <div class="controls">
+          <%= form.text_field :ingredient_2, id: 'ingredient-text-field' %>
+        </div>
+      </div>
+    
+      <div class="control-group">
+      <%= form.label :ingredient_3 %>
+        <div class="controls">
+          <%= form.text_field :ingredient_3, id: 'ingredient-text-field' %>
+        </div>
+      </div>
+    
+      <div class="control-group">
+      <%= form.label :ingredient_4 %>
+        <div class="controls">
+          <%= form.text_field :ingredient_4, id: 'ingredient-text-field' %>
+        </div>
+      </div>
+    
+      <div class="control-group">
+      <%= form.label :ingredient_5 %>
+        <div class="controls">
+          <%= form.text_field :ingredient_5, id: 'ingredient-text-field' %>
+        </div>
+      </div>
+    
+      <%= form.submit "Submit", class: 'btn btn-primary' %>
+    <% end %>
   </div>
-
-  <div class="control-group">
-  <%= form.label :ingredient_2 %>
-    <div class="controls">
-      <%= form.text_field :ingredient_2, id: 'ingredient-text-field' %>
-    </div>
+  
+  <div class="recipe-api-hits">
+    <%= render "recipe" %>
   </div>
-
-  <div class="control-group">
-  <%= form.label :ingredient_3 %>
-    <div class="controls">
-      <%= form.text_field :ingredient_3, id: 'ingredient-text-field' %>
-    </div>
-  </div>
-
-  <div class="control-group">
-  <%= form.label :ingredient_4 %>
-    <div class="controls">
-      <%= form.text_field :ingredient_4, id: 'ingredient-text-field' %>
-    </div>
-  </div>
-
-  <div class="control-group">
-  <%= form.label :ingredient_5 %>
-    <div class="controls">
-      <%= form.text_field :ingredient_5, id: 'ingredient-text-field' %>
-    </div>
-  </div>
-
-  <%= form.submit "Submit", class: 'btn btn-primary' %>
-<% end %>
-
-<div>
-  <%= render "recipe" %>
-</div>
+</body>

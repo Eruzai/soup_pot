@@ -1,32 +1,38 @@
-<h1>Your Inventory</h1>
+<body class="inventory">
 
-<%= link_to 'NEW', new_item_path %>
+  <header class="page-header">
+    <h1>Your Fridge Contents:</h1>
+  </header>
 
-<table>
-
-  <thead>
-    <tr>
-      <td>Name</td>
-      <td>Quantity</td>
-      <td>Expiry</td>
-      <td>Edit/Delete</td>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @items.each do |item| %>
-    <tr>
-      <td><%= link_to item.name, item_path(item.id) %></td>
-      <td><%= item.quantity %></td>
-      <td><%= item.expiration_date %></td>
-      <td>
-        <%= link_to 'Edit', edit_item_path(item.id) %>
-      </td>
-      <td>
-        <%= link_to 'Delete', item_path(item.id), method: :delete, data: { confirm: 'Remove this item?' } %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-
-</table>
+  <div class="table-container">
+    <table class="table">
+      <thead>
+        <tr class="table-row">
+          <td class="table-data">Name</td>
+          <td class="table-data">Quantity</td>
+          <td class="table-data">Expiry</td>
+          <td class="table-data">Action</td>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <% @items.each do |item| %>
+        <tr class="table-row">
+          <td class="table-data"><%= item.name %></td>
+          <td class="table-data"><%= item.quantity %></td>
+          <td class="table-data"><%= item.expiration_date %></td>
+          <td class="table-data"><%= link_to 'Edit', edit_item_path(item.id) %> | <%= link_to item_path(item.id), method: :delete, data: { confirm: 'Remove this item?' } do %><%= fa_icon "trash"%><% end %></td>
+        </tr>
+        <% end %>
+        <tr class="table-row">
+          <%= form_for :item do |form| %>
+            <td class="table-data"><%= form.text_field :name %></td>
+            <td class="table-data"><%= form.text_field :quantity %></td>
+            <td class="table-data"><%= form.text_field :expiration_date, placeholder: "yyyy-mm-dd" %></td>
+            <td class="table-data"><%= form.submit %></td>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
