@@ -1,6 +1,6 @@
 <% @recipes.each do |recipe| %>
   <div>
-    <%= recipe.name %>
+    <%= link_to recipe.name, my_recipe_path(recipe.id) %>
     <img src=<%= recipe.image %> alt='food img' width='200' height='200'>
     <%= recipe.description %>
     <%= recipe.cooking_time %>
@@ -21,14 +21,14 @@
     </div>
     <% if current_user.id == recipe.user_id %>
       <% if !recipe.recipe_url %>
-        <%= link_to 'Edit', "/my_recipes/#{recipe.id}" %>
+        <%= link_to 'Edit', edit_my_recipe_path(recipe.id)  %>
       <% end %>
-      <%= link_to 'Delete', "/my_recipes/#{recipe.id}", method: :delete, data: { confirm: 'Delete this Recipe?' } %>
+      <%= link_to 'Delete', my_recipe_path(recipe.id), method: :delete, data: { confirm: 'Delete this Recipe?' } %>
     <% end %>
   </div>
 <% end %>
 <div>
   <% if @path == 'my_recipes' %>
-    <%= link_to 'Create', "/my_recipes/create" %>
+    <%= link_to 'Create', new_my_recipe_path %>
   <% end %>
 </div>
