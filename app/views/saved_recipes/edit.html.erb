@@ -1,33 +1,43 @@
-<%= form_with url: "/my_recipes/#{@recipe.id}", method: :patch do |form| %>
-  <div class="form-group">
-    <%= form.label :name %>
-    <%= form.text_field :name, value: "#{@recipe.name}" %>
+<body class="edit-item">
+
+  <header class="page-header">
+    <h1>Alter the fields below to edit your recipe</h1>
+  </header>
+
+  <div class="form">
+    <%= form_with url: "/my_recipes/#{@recipe.id}", method: :patch do |form| %>
+      <div class="form-group">
+        <%= form.label :name %>
+        <%= form.text_field :name, value: "#{@recipe.name}" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :image %>
+        <%= form.file_field :image %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :description %>
+        <%= form.text_field :description, value: "#{@recipe.description}" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :cooking_time %>
+        <%= form.text_field :cooking_time, value: "#{@recipe.cooking_time}"  %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :ingredients %>
+        <%= form.text_area :ingredients, value: "#{@ingredients}"  %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :directions %>
+        <%= form.text_area :directions, value: "#{@recipe.directions}"  %>
+      </div>
+
+      <%= form.submit "Update Recipe" %>
+    <% end %>
   </div>
 
-  <div class="form-group">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :description %>
-    <%= form.text_field :description, value: "#{@recipe.description}" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :cooking_time %>
-    <%= form.text_field :cooking_time, value: "#{@recipe.cooking_time}"  %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :ingredients %>
-    <%= form.text_area :ingredients, value: "#{@ingredients}"  %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :directions %>
-    <%= form.text_area :directions, value: "#{@recipe.directions}"  %>
-  </div>
-
-  <%= form.submit "Update Recipe", class: 'btn btn-primary' %>
-<% end %>
+</body>

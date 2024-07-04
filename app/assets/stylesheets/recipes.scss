@@ -1,30 +1,40 @@
 .recipes {
   background-image: url('becca-tapert-mDOGXiuVb4M-unsplash.jpg');
   background-position: 0px -150px;
+  margin-bottom: 700px;
 
-  .saved-recipe-container {
-    background-color: rgba(0, 0, 0, 0.7);
+  .saved-recipes {
     display: flex;
-    border-radius: 15px;
+    align-items: center;
+    font-size: 1em;
     width: 700px;
+    min-height: 225px;
     margin-top: 50px;
-    transition: transform 0.3s ease;
-  }
-
-  .saved-recipe-container:hover {
-    transform: scale(1.05);
+    text-decoration: none;
   }
 
   .recipe-name {
     font-size: 2em;
   }
 
+  .recipe-details {
+    width: inherit;
+    margin-right: 5px;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: right;
+  }
+
+  .upload-recipe {
+    margin-top: 50px;
+  }
+
   img {
     width: 200px;
     height: 200px;
-  }
-
-  a {
-    color: cyan;
+    margin: 15px;
+    margin-left: 5px;
   }
 }

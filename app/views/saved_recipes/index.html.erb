@@ -1,11 +1,23 @@
 <body class="recipes">
-  
+
+  <header class="page-header">
+    <h1>
+      Below are your saved recipes!
+    </h1>
+  </header>
+
+  <div class="upload-recipe container">
+    <% if @path == 'my_recipes' %>
+      <%= link_to 'Upload Recipe', new_my_recipe_path %>
+    <% end %>
+  </div>
+
   <% @recipes.each do |recipe| %>
-    <div class="saved-recipe-container">
+    <div class="saved-recipes container">
       <div>
         <img src=<%= recipe.image %> alt='food img'>
       </div>
-      <div>
+      <div class="recipe-details">
         <div class="recipe-name">
           <%= link_to recipe.name, my_recipe_path(recipe.id) %>
         </div>
@@ -28,23 +40,17 @@
           <%= recipe.description %>
         </p>
         <% if current_user.id == recipe.user_id %>
-          <div>
+          <div class="actions fa-icon">
+            <p>
             <% if !recipe.recipe_url %>
-              <%= link_to 'Edit', edit_my_recipe_path(recipe.id) %>
+              <%= link_to edit_my_recipe_path(recipe.id) do %><%= fa_icon "edit"%><% end %> | 
             <% end %>
-          </div>
-          <div>
-            <%= link_to 'Delete', my_recipe_path(recipe.id), method: :delete, data: { confirm: 'Delete this Recipe?' } %>
+            <%= link_to my_recipe_path(recipe.id), method: :delete, data: { confirm: 'Delete this Recipe?' } do %><%= fa_icon "trash"%><% end %>
+            </p>
           </div>
         <% end %>
       </div>
     </div>
   <% end %>
-
-  <div>
-    <% if @path == 'my_recipes' %>
-      <%= link_to 'Create', new_my_recipe_path %>
-    <% end %>
-  </div>
 
 </body>

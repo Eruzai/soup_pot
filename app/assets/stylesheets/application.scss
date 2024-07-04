@@ -39,6 +39,10 @@ a {
   text-decoration: none;
 }
 
+a:hover{
+  text-decoration: underline;
+}
+
 .page-header {
   display: flex;
   flex-direction: column;
@@ -52,4 +56,16 @@ a {
   flex-direction: column;
   align-items: center;
   text-shadow: 2px 2px 3px rgb(0, 0, 0), -2px -2px 3px rgb(0, 0, 0), -2px 2px 3px rgb(0, 0, 0), 2px -2px 3px rgb(0, 0, 0);
+}
+
+.container {
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 15px;
+  width: fit-content;
+  font-size: 2em;
+  transition: transform 0.3s ease;
+}
+
+.container:hover {
+  transform: scale(1.05);
 }

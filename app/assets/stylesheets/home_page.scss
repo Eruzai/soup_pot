@@ -15,16 +15,7 @@
     width: 80%;
   }
 
-  .container {
-    background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 15px;
-    width: fit-content;
-    font-size: 2em;
-    transition: transform 0.3s ease;
-  }
-
   .container:hover {
-    transform: scale(1.05);
     text-decoration: underline;
   }
 }
