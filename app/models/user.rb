@@ -2,6 +2,9 @@ class User < ApplicationRecord
 
   before_destroy :destroy_recipes
   before_destroy :destroy_items
+  before_destroy :destroy_reviews
+
+  mount_uploader :profile_img, UserProfileImageUploader
 
   has_secure_password
 
@@ -35,6 +38,10 @@ class User < ApplicationRecord
 
   def destroy_items
     self.items.destroy_all
+  end
+
+  def destroy_reviews
+    self.reviews.destroy_all
   end
 
 end

@@ -2,6 +2,8 @@ class Recipe < ApplicationRecord
 
   before_destroy :destroy_ingredients
 
+  mount_uploader :image, SoupImageUploader
+
   belongs_to :user
   has_many :ingredients
   has_many :reviews
