@@ -14,6 +14,10 @@
  *= require_self
  *= require font-awesome
  */
+
+@import "bootstrap";
+@import "font-awesome";
+
  .hidden {
   display: none;
 }
