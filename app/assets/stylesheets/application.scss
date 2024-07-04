@@ -62,10 +62,14 @@ a:hover{
   background-color: rgba(0, 0, 0, 0.7);
   border-radius: 15px;
   width: fit-content;
-  font-size: 2em;
-  transition: transform 0.3s ease;
 }
 
-.container:hover {
-  transform: scale(1.05);
+
+.green {
+  color: rgb(77, 255, 118);
 }
+
+.red {
+  color: rgb(255, 0, 0);
+}
+

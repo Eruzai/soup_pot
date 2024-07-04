@@ -43,9 +43,9 @@
           <div class="actions fa-icon">
             <p>
             <% if !recipe.recipe_url %>
-              <%= link_to edit_my_recipe_path(recipe.id) do %><%= fa_icon "edit"%><% end %> | 
+              <%= link_to edit_my_recipe_path(recipe.id) do %><%= fa_icon "edit lg", class: "green" %><% end %> | 
             <% end %>
-            <%= link_to my_recipe_path(recipe.id), method: :delete, data: { confirm: 'Delete this Recipe?' } do %><%= fa_icon "trash"%><% end %>
+            <%= link_to my_recipe_path(recipe.id), method: :delete, data: { confirm: 'Delete this Recipe?' } do %><%= fa_icon "trash lg", class: "red" %><% end %>
             </p>
           </div>
         <% end %>

@@ -1,50 +1,84 @@
-<%= form_with url: '/find_friends', method: :get do |form| %>
-  <%= form.label :first_name %>
-  <%= form.text_field :first_name %>
+<body class="friends">
 
-  <%= form.label :last_name %>
-  <%= form.text_field :last_name %>
+  <header class="page-header">
+    <h1>Welcome to your friends page!</h1>
+  </header>
 
-  <%= form.submit "Search" %>
-<% end %>
+  <div class="friends-containers">
+    <% if @friends[0] %>
+      <div class="my-friends container">
+        <h3> My Friends: </h3>
+        <% @friends.each do |friend| %>
+          <div class="user">
+            <img src=<%=friend.profile_img%> alt="profile image">
+            <%= friend.first_name %>
+            <%= friend.last_name %>
+            <%= link_to "/find_friends/#{friend.id}", method: :delete, data: { confirm: 'Remove this Friend?' } do %><%= fa_icon "user-times lg", class: "red" %><% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
 
-<p> Search Results: </p>
-<% @search_results.each do |user| %>
-  <div>
-    <%= user.profile_img %>
-    <%= user.first_name %>
-    <%= user.last_name %>
-    <%= link_to 'Send Friend Request', "/find_friends/#{user.id}", method: :post %>
+    <div class="search container">
+      <h3>Let's find someone to cook with!</h3>
+      <div class="form">
+        <%= form_with url: '/find_friends', method: :get do |form| %>
+          <%= form.label :first_name %>
+          <%= form.text_field :first_name %>
+
+          <%= form.label :last_name %>
+          <%= form.text_field :last_name %>
+
+          <%= form.submit "Search" %>
+        <% end %>
+      </div>
+
+      <% if @search_results[0] %>
+        <div class="search-results">
+          <h3> Search Results: </h3>
+          <% @search_results.each do |user| %>
+            <div class="user">
+              <img src=<%=user.profile_img%> alt="profile image">
+              <%= user.first_name %>
+              <%= user.last_name %>
+              <%= link_to "/find_friends/#{user.id}", method: :post do %><%= fa_icon "user-plus lg", class: "green" %><% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <% if @sent_requests[0] || @recieved_requests[0] %>
+      <div class="requests container">
+        <% if @sent_requests[0] %>
+          <div class="sent-requests">
+            <h3> Sent Requests: </h3>
+            <% @sent_requests.each do |user| %>
+              <div class="user">
+                <img src=<%=user.profile_img%> alt="profile image">
+                <%= user.first_name %>
+                <%= user.last_name %>
+                <%= link_to "/find_friends/#{user.id}", method: :delete, data: { confirm: 'Cancel this friend request?' } do %><%= fa_icon "ban lg", class: "red" %><% end %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+
+        <% if @recieved_requests[0] %>
+          <div class="recieved-requests">
+            <h3> Recieved Requests: </h3>
+            <% @recieved_requests.each do |user| %>
+              <div class="user">
+                <img src=<%=user.profile_img%> alt="profile image">
+                <%= user.first_name %>
+                <%= user.last_name %>
+                <%= link_to "/find_friends/#{user.id}", method: :patch do %><%= fa_icon "user-plus lg", class: "green" %><% end %>
+                <%= link_to "/find_friends/#{user.id}", method: :delete, data: { confirm: 'Decline this friend request?' } do %><%= fa_icon "user-times lg", class: "red" %><% end %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
-<% end %>
-
-<p> My Friends: </p>
-<% @friends.each do |friend| %>
-  <div>
-    <%= friend.profile_img %>
-    <%= friend.first_name %>
-    <%= friend.last_name %>
-    <%= link_to 'Remove Friend', "/find_friends/#{friend.id}", method: :delete, data: { confirm: 'Remove this Friend?' } %>
-  </div>
-<% end %>
-
-<p> Sent Requests: </p>
-<% @sent_requests.each do |user| %>
-  <div>
-    <%= user.profile_img %>
-    <%= user.first_name %>
-    <%= user.last_name %>
-    <%= link_to 'Cancel Request', "/find_friends/#{user.id}", method: :delete, data: { confirm: 'Remove this Request?' } %>
-  </div>
-<% end %>
-
-<p> Recieved Requests: </p>
-<% @recieved_requests.each do |user| %>
-  <div>
-    <%= user.profile_img %>
-    <%= user.first_name %>
-    <%= user.last_name %>
-    <%= link_to 'Accept Request', "/find_friends/#{user.id}", method: :patch %>
-    <%= link_to 'Decline Request', "/find_friends/#{user.id}", method: :delete, data: { confirm: 'Are you sure that you want to decline this request?' } %>
-  </div>
-<% end %>
+</body>

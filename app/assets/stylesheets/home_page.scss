@@ -9,13 +9,19 @@
     font-size: 2.5em;
   }
 
+  .container {
+    font-size: 2em;
+    transition: transform 0.3s ease;
+  }
+  
+  .container:hover {
+    transform: scale(1.05);
+    text-decoration: underline;
+  }
+
   .links-container {
     display: flex;
     margin-top: 250px;
     width: 80%;
-  }
-
-  .container:hover {
-    text-decoration: underline;
   }
 }

@@ -1,0 +1,39 @@
+.friends {
+  background-image: url('odiseo-castrejon-CX8ooha2yLA-unsplash.jpg');
+  background-position: 0px -150px;
+
+  .friends-containers {
+    display: flex;
+  }
+
+  img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .container {
+    margin: 15px;
+    margin-top: 50px;
+  }
+
+  .form {
+    margin: 30px;
+  }
+
+  .user {
+    margin-bottom: 15px;
+  }
+
+  h3 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .sent-requests {
+    margin-bottom: 40px;
+  }
+
+  .search-results {
+    margin-top: 40px;
+  }
+}
