@@ -1,0 +1,30 @@
+.recipes {
+  background-image: url('becca-tapert-mDOGXiuVb4M-unsplash.jpg');
+  background-position: 0px -150px;
+
+  .saved-recipe-container {
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    border-radius: 15px;
+    width: 700px;
+    margin-top: 50px;
+    transition: transform 0.3s ease;
+  }
+
+  .saved-recipe-container:hover {
+    transform: scale(1.05);
+  }
+
+  .recipe-name {
+    font-size: 2em;
+  }
+
+  img {
+    width: 200px;
+    height: 200px;
+  }
+
+  a {
+    color: cyan;
+  }
+}
