@@ -55,6 +55,12 @@ gem 'sass-rails'
 gem 'bootstrap'
 gem 'font-awesome-rails'
 
+# ImageMagick ( Make sure librairies installed )
+gem 'rmagick'
+
+# Fake Data with Carrierwave
+gem 'carrierwave'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
