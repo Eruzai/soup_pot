@@ -1,11 +1,9 @@
 class Recipe < ApplicationRecord
 
-  before_destroy :destroy_ingredients
-
   belongs_to :user
-  has_many :ingredients
-  has_many :reviews
-  
+  has_many :ingredients, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+
   validates :name, presence: true
   validates :description, presence: true
   validates :directions, presence: true
