@@ -1,0 +1,59 @@
+.soup-api {
+  background-image: url('lampos-aritonang-e0rzKWVUMu4-unsplash.jpg');
+  background-position: 0px -150px;
+  margin-bottom: 500px;
+
+  .body-items{
+    display: flex;
+  }
+
+  .form-and-fridge {
+    display: flex;
+  }
+
+  .fridge {
+    margin: 15px;
+    max-width: 116px;
+  }
+
+  .fridge-message {
+    margin-top: 30px;
+  }
+
+  .container {
+    margin: 30px;
+  }
+
+  .api-hits {
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+    width: 700px;
+    min-height: 225px;
+    margin-top: 50px;
+    text-decoration: none;
+  }
+
+  .recipe-details {
+    width: inherit;
+    margin-right: 5px;
+  }
+
+  .recipe-name {
+    font-size: 2em;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: right;
+    margin-bottom: 15px;
+  }
+
+  img {
+    width: 200px;
+    height: 200px;
+    margin: 15px;
+    margin-left: 5px;
+  }
+
+}
