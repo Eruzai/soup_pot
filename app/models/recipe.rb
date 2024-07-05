@@ -9,10 +9,4 @@ class Recipe < ApplicationRecord
   validates :directions, presence: true
   validates :cooking_time, presence: true
 
-  private
-
-  def destroy_ingredients
-    self.ingredients.destroy_all
-  end
-
 end
