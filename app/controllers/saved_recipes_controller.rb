@@ -42,6 +42,7 @@ class SavedRecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find params[:id]
+    @ingredients = query_recipe_ingredients_to_string(@recipe)
   end
 
   def update
