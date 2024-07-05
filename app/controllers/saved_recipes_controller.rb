@@ -12,7 +12,6 @@ class SavedRecipesController < ApplicationController
     @path = 'my_recipes'
     @user = User.find (current_user.id)
     @recipes = @user.recipes.all
-    render :index
   end
 
   def friends_recipes
@@ -34,7 +33,7 @@ class SavedRecipesController < ApplicationController
         @ingredient = @recipe.ingredients.new(item: item)
         @ingredient.save
       end
-      redirect_to '/my_recipes', notice: 'Recipe information and ingredients saved!'
+      redirect_to my_recipes_path, notice: 'Recipe information and ingredients saved!'
     else
       raise 'Recipe failed to save!'
     end
