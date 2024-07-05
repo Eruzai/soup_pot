@@ -14,12 +14,12 @@
 
   <% @recipes.each do |recipe| %>
     <div class="saved-recipes container">
-
-    <button class="toggle-recipe" data-recipe-id="<%= recipe.id %>"><%= recipe.name %></button>
-      <div id="recipe-info-<%= recipe.id %>" class="hidden">
-        <%= render partial: 'saved_recipes/recipe', locals: { recipe: recipe, current_user: current_user } %>
-      </div>
-      
+    <% if @path == 'my_recipes' %>
+      <%= link_to "#{recipe.name}", "/my_recipe/#{recipe.id}" %>
+    <% else %>
+      <%= link_to "#{recipe.name}", "/my_recipe/friends_recipes/#{recipe.id}" %>
+    <% end %>
+    
       <div>
         <img src=<%= recipe.image %> alt='food img'>
       </div>
@@ -56,6 +56,12 @@
           </div>
         <% end %>
       </div>
+    </div>
+  <% end %>
+  
+  <% if @recipe %>
+    <div>
+      <%= render partial: 'saved_recipes/recipe', locals: { recipe: @recipe, current_user: current_user } %>
     </div>
   <% end %>
 

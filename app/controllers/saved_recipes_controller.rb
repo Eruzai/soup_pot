@@ -1,21 +1,25 @@
 class SavedRecipesController < ApplicationController
 
-  def show
-    @user = current_user
-    @recipe = Recipe.find params[:id]
-    @ingredients = query_recipe_ingredients_to_string(@recipe)
-    @review = @recipe.reviews.build
-    @reviews = @recipe.reviews
-  end
-
   def index
     @path = 'my_recipes'
+    if params[:id]
+      @recipe = Recipe.find params[:id]
+      @ingredients = query_recipe_ingredients_to_string(@recipe)
+      @review = @recipe.reviews.build
+      @reviews = @recipe.reviews
+    end
     @user = User.find (current_user.id)
     @recipes = @user.recipes.all
   end
 
   def friends_recipes
     @user = User.find (current_user.id)
+    if params[:id]
+      @recipe = Recipe.find params[:id]
+      @ingredients = query_recipe_ingredients_to_string(@recipe)
+      @review = @recipe.reviews.build
+      @reviews = @recipe.reviews
+    end
     @friends = @user.friends.where(pending: false).map(&:friend) + @user.inverse_friends.where(pending: false).map(&:user)
     @recipes = @friends.flat_map(&:recipes)
     render :index
