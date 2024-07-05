@@ -4,9 +4,13 @@ class ReviewsController < ApplicationController
     @review = @recipe.reviews.new(review_params)
     @review.user_id = current_user.id
     if @review.save
-      redirect_to "/my_recipes", notice: 'Review was successfully created.'
+      if current_user.id == @recipe.user_id
+        redirect_to "/my_recipe/#{@recipe.id}"
+      else
+         redirect_to "/my_recipe/friends_recipes/#{@recipe.id}"
+      end
     else
-      render 'saved_recipes/show'
+      render 'saved_recipes/index'
     end
   end
 
@@ -19,7 +23,11 @@ class ReviewsController < ApplicationController
     @recipe = Recipe.find params[:recipe_id]
     @review = Review.find params[:id]
     if @review.update(review_params)
-      redirect_to  "/my_recipes"
+      if current_user.id == @recipe.user_id
+        redirect_to "/my_recipe/#{@recipe.id}"
+      else
+         redirect_to "/my_recipe/friends_recipes/#{@recipe.id}"
+      end
     else
       render :new
     end
@@ -29,7 +37,11 @@ class ReviewsController < ApplicationController
     @recipe = Recipe.find params[:recipe_id]
     @review = @recipe.reviews.find params[:id]
     @review.destroy
-    redirect_to "/my_recipes", notice: 'Review deleted!'
+    if current_user.id == @recipe.user_id
+      redirect_to "/my_recipe/#{@recipe.id}"
+    else
+      redirect_to "/my_recipe/friends_recipes/#{@recipe.id}"
+    end
   end
 
   private
