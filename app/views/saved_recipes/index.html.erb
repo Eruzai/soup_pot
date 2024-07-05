@@ -14,6 +14,12 @@
 
   <% @recipes.each do |recipe| %>
     <div class="saved-recipes container">
+
+    <button class="toggle-recipe" data-recipe-id="<%= recipe.id %>"><%= recipe.name %></button>
+      <div id="recipe-info-<%= recipe.id %>" class="hidden">
+        <%= render partial: 'saved_recipes/recipe', locals: { recipe: recipe, current_user: current_user } %>
+      </div>
+      
       <div>
         <img src=<%= recipe.image %> alt='food img'>
       </div>
@@ -43,7 +49,7 @@
           <div class="actions fa-icon">
             <p>
             <% if !recipe.recipe_url %>
-              <%= link_to edit_my_recipe_path(recipe.id) do %><%= fa_icon "edit lg", class: "green" %><% end %> | 
+              <%= link_to edit_my_recipe_path(recipe.id) do %><%= fa_icon "edit lg", class: "green" %><% end %> |
             <% end %>
             <%= link_to my_recipe_path(recipe.id), method: :delete, data: { confirm: 'Delete this Recipe?' } do %><%= fa_icon "trash lg", class: "red" %><% end %>
             </p>
