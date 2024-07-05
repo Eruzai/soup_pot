@@ -1,44 +1,45 @@
 <body class="upload-item">
 
   <header class="page-header">
-    <h1>Use the fields below to upload your recipe</h1>
+    <h1>Tell us about your soup recipe!</h1>
   </header>
 
-  <div class="form">
+  <div class="form container">
     <%= form_with url: "/my_recipes/create", method: :post do |form| %>
       <div class="form-group">
-        <%= form.label :name %>
-        <%= form.text_field :name %>
+        <%= form.label "Give your soup a name:" %>
+        <%= form.text_field :name, placeholder: "ex: Mary's Carrot Soup", class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= form.label :image %>
-        <%= form.file_field :image %>
+        <%= form.label "Upload an image:" %>
+        <%= form.file_field :image, class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= form.label :description %>
-        <%= form.text_field :description %>
+        <%= form.label "Write a short description:" %>
+        <%= form.text_field :description, placeholder: "ex: A light soup for a sunny day", class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= form.label :cooking_time %>
-        <%= form.text_field :cooking_time %>
+        <%= form.label "How long does it take to cook?" %>
+        <%= form.text_field :cooking_time, placeholder: "ex: 20 minutes", class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= form.label :ingredients %>
-        <%= form.text_area :ingredients %>
+        <%= form.label "List all ingredients and their amounts here. Seperate with commas!" %>
+        <%= form.text_area :ingredients, placeholder: "ex: 2 carrots, a pinch of salt, ...", class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= form.label :directions %>
-        <%= form.text_area :directions %>
+        <%= form.label "How do you make it?" %>
+        <%= form.text_area :directions, placeholder: "ex: Step one: wash and peel your carrots...", class: 'form-control' %>
       </div>
 
-      <%= form.submit "Upload Recipe"%>
+      <div class="form-group">
+        <%= form.submit "Upload Recipe"%>
+      </div>
     <% end %>
-
   </div>
 
 </body>

@@ -4,7 +4,7 @@
     <h1>Signup!</h1>
   </header>
 
-  <div class="form">
+  <div class="form container">
     <%= form_for :user, url: '/users' do |form| %>
 
       <div class="form-group">
@@ -37,7 +37,9 @@
         <%= form.password_field :password_confirmation, class: 'form-control' %>
       </div>
 
-    <%= form.submit "Submit", class: 'btn btn-primary' %>
+      <div class="form-group">
+        <%= form.submit "Submit", class: 'btn btn-primary' %>
+      </div>
     <% end %>
   </div>
 

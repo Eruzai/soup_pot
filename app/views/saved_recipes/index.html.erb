@@ -6,11 +6,11 @@
     </h1>
   </header>
 
-  <div class="upload-recipe container">
-    <% if @path == 'my_recipes' %>
+  <% if @path == 'my_recipes' %>
+    <div class="upload-recipe container">
       <%= link_to 'Upload Recipe', new_my_recipe_path %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 
   <% @recipes.each do |recipe| %>
     <div class="saved-recipes container">
