@@ -64,7 +64,7 @@ puts "Users have Items!"
 
 puts "Giving Users Recipes..."
 
-@recipe1 = @admin1.recipes.create!(directions: 'Follow recipe link for cooking instructions.', name: 'Real tomato soup', image: open_asset('default-soup.jpeg'), description: 'no user description', cooking_time: '25 minutes', source: 'BBC Good Food', recipe_url: 'https://www.bbcgoodfood.com/recipes/real-tomato-soup')
+@recipe1 = @admin1.recipes.create!(directions: nil, name: 'Real tomato soup', image: open_asset('default-soup.jpeg'), description: nil, cooking_time: '25 minutes', source: 'BBC Good Food', recipe_url: 'https://www.bbcgoodfood.com/recipes/real-tomato-soup')
 @recipe2 = @admin2.recipes.create!(directions: 'Follow recipe link for cooking instructions.', name: 'Strawberry & Tomato gazpacho', image: open_asset('default-soup.jpeg'), description: 'no user description', cooking_time: '0 minutes', source: 'Food52', recipe_url: 'https://food52.com/recipes/29986-strawberry-tomato-gazpacho')
 @recipe3 = @admin2.recipes.create!(directions: 'Follow recipe link for cooking instructions.', name: 'Creamy Tomato Soup', image: open_asset('default-soup.jpeg'), description: 'no user description', cooking_time: '90 minutes', source: 'Honest Cooking', recipe_url: 'http://honestcooking.com/tomato-soup-and-a-recipe-for-sharing/')
 @recipe4 = @admin3.recipes.create!(directions: 'Follow recipe link for cooking instructions.', name: 'Creamy Tomato Soup', image: open_asset('default-soup.jpeg'), description: 'no user description', cooking_time: '0 minutes', source: 'Lottie + Doof', recipe_url: 'http://www.lottieanddoof.com/2008/12/best-tomato-soup/')
