@@ -65,6 +65,7 @@ class RecipeApiController < ApplicationController
       :description,
       :source,
       :recipe_url,
+      :web_image,
       :image,
       :cooking_time,
     )
@@ -73,7 +74,7 @@ class RecipeApiController < ApplicationController
       description: params[:description].keys.join(""),
       source: params[:source].keys.join(""),
       recipe_url: params[:recipe_url].keys.join(""),
-      image: params[:image].keys.join(""),
+      web_image: params[:image].keys.join(""),
       cooking_time: params[:cooking_time].keys.join(""),
       directions: 'Follow recipe link for cooking instructions.'
     }
