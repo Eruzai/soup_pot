@@ -15,7 +15,11 @@
   <% @recipes.each do |recipe| %>
     <div class="saved-recipes container">
       <div>
-        <img src=<%= recipe.image %> alt='food img'>
+        <% if recipe.web_image %>
+          <img src=<%= recipe.web_image %> alt="Soup image" width="200" height="200">
+        <% else %>
+          <img src=<%= recipe.image %> alt="Soup image" width="200" height="200">
+        <% end %>
       </div>
       <div class="recipe-details">
         <div class="recipe-name">
