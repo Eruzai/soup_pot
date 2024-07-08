@@ -37,7 +37,7 @@ class SavedRecipesController < ApplicationController
         @ingredient = @recipe.ingredients.new(item: item)
         @ingredient.save
       end
-      redirect_to my_recipes_path, notice: 'Recipe information and ingredients saved!'
+      redirect_to my_recipes_path
     else
       raise 'Recipe failed to save!'
     end
@@ -57,7 +57,7 @@ class SavedRecipesController < ApplicationController
         @ingredient = @recipe.ingredients.new(item: item)
         @ingredient.save
       end
-      redirect_to '/my_recipes', notice: 'Recipe information and ingredients updated!'
+      redirect_to '/my_recipes'
     else
       render :edit
     end

@@ -20,7 +20,7 @@ class RecipeApiController < ApplicationController
         @ingredient = @recipe.ingredients.new(item: item)
         @ingredient.save
       end
-      redirect_to '/my_recipes', notice: 'Recipe information and ingredients saved!'
+      redirect_to '/my_recipes'
     else
       raise 'Recipe failed to save!'
     end
@@ -41,7 +41,7 @@ class RecipeApiController < ApplicationController
 
   def ingredients_query
     item = search_params
-    query = "#{item[:ingredient_1]} #{item[:ingredient_2]} #{item[:ingredient_3]} #{item[:ingredient_4]} #{item[:ingredient_5]} #{item[:ingredient_6]} #{item[:ingredient_7]} #{item[:ingredient_8]} #{item[:ingredient_9]} #{item[:ingredient_10]},"
+    query = "#{item[:ingredient_1]} #{item[:ingredient_2]} #{item[:ingredient_3]} #{item[:ingredient_4]} #{item[:ingredient_5]},"
     query.strip
   end
 
@@ -52,11 +52,6 @@ class RecipeApiController < ApplicationController
       :ingredient_3,
       :ingredient_4,
       :ingredient_5,
-      :ingredient_6,
-      :ingredient_7,
-      :ingredient_8,
-      :ingredient_9,
-      :ingredient_10,
     )
   end
 
