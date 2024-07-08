@@ -10,6 +10,11 @@
   </header>
 
   <div class="links-container">
+    <% if current_user %>
+      <%= month_calendar do |date| %>
+        <%= date.day %>
+      <% end %>
+    <% end %>
     <div class="container">
       <%= link_to 'Lets Cook!', '/recipes' %>
     </div>
