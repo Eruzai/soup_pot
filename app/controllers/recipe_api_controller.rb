@@ -62,7 +62,6 @@ class RecipeApiController < ApplicationController
   def recipe_params
     params.permit(
       :name,
-      :description,
       :source,
       :recipe_url,
       :web_image,
@@ -71,12 +70,10 @@ class RecipeApiController < ApplicationController
     )
     return {
       name: params[:name].keys.join(""),
-      description: params[:description].keys.join(""),
       source: params[:source].keys.join(""),
       recipe_url: params[:recipe_url].keys.join(""),
       web_image: params[:image].keys.join(""),
-      cooking_time: params[:cooking_time].keys.join(""),
-      directions: 'Follow recipe link for cooking instructions.'
+      cooking_time: params[:cooking_time].keys.join("")
     }
   end
 
