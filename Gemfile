@@ -49,6 +49,9 @@ gem "bootsnap", require: false
 
 gem 'turbolinks'
 
+# Use simple_calendar
+gem 'simple_calendar'
+
 # Use SASS
 gem 'sass-rails'
 
