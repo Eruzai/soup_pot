@@ -4,20 +4,28 @@
     <h1>Alter the fields below to edit your fridge item</h1>
   </header>
 
-  <div class="form">
+  <div class="form container">
     <%= form_for @item do |form| %>
-    
-      <%= form.label :name %>
-      <%= form.text_field :name %>
-    
-      <%= form.label :quantity %>
-      <%= form.text_field :quantity %>
-    
-      <%= form.label :expiration_date %>
-      <%= form.text_field :expiration_date, placeholder: "yyyy-mm-dd" %>
-    
-      <%= form.submit %>
-    
+
+      <div class="form-group">
+        <%= form.label :name %>
+        <%= form.text_field :name, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :quantity %>
+        <%= form.text_field :quantity, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :expiration_date %>
+        <%= form.text_field :expiration_date, placeholder: "yyyy-mm-dd", class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= form.submit %>
+      </div>
+
     <% end %>
   </div>
 </body>
