@@ -12,7 +12,8 @@
 
 ActiveRecord::Schema[7.1].define(version: 2024_07_08_195231) do
   create_table "events", force: :cascade do |t|
-    t.date "date"
+    t.string "name"
+    t.date "start_time"
     t.boolean "private"
     t.integer "user_id", null: false
     t.integer "recipe_id"
