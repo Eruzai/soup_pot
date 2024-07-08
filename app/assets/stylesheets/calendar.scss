@@ -1,0 +1,41 @@
+.simple-calendar {
+
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 15px;
+  width: fit-content;
+  padding: 15px;
+
+  .next-month {
+    background-color: grey;
+  }
+
+  .prev-month {
+    background-color: grey;
+  }
+
+  th {
+    border: solid, 1px, lightgrey;
+  }
+
+  td {
+    border: solid, 1px, lightgrey;
+  }
+
+  .today {
+    background-color: yellow;
+  }
+
+  .day {
+    padding: 0px;
+    padding-left: 5px;
+    width: 50px;
+    height: 35px;
+    transition: transform 0.3s ease;
+  }
+  
+  .day:hover {
+    background-color: rgb(112, 255, 143);
+    transform: scale(1.2);
+  }
+
+}
