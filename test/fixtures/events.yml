@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2024-07-08
+  private: false
+  user: one
+  recipe: one
+
+two:
+  date: 2024-07-08
+  private: false
+  user: two
+  recipe: two
