@@ -15,7 +15,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_08_195231) do
     t.date "date"
     t.boolean "private"
     t.integer "user_id", null: false
-    t.integer "recipe_id", null: false
+    t.integer "recipe_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["recipe_id"], name: "index_events_on_recipe_id"

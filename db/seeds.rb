@@ -33,6 +33,20 @@ puts "Creating Admin Users..."
 
 puts "Users Created!"
 
+## Create Events
+
+puts "Creating Events..."
+
+@admin1.events.create!(date: '2024-07-16', private: false)
+@admin1.events.create!(date: '2024-07-28', private: false)
+@admin1.events.create!(date: '2024-08-05', private: false)
+@admin3.events.create!(date: '2024-07-16', private: false)
+@admin3.events.create!(date: '2024-07-23', private: false)
+@admin2.events.create!(date: '2024-08-01', private: false)
+@admin2.events.create!(date: '2024-07-28', private: false)
+
+puts "Events Created!"
+
 ## Create Friendships
 
 puts "Creating Friendships..."
