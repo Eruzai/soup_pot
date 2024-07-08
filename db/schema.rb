@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_02_235802) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_08_170345) do
   create_table "friends", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "friend_id", null: false
@@ -50,6 +50,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_02_235802) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "directions"
+    t.string "web_image"
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
