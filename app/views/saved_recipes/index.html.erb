@@ -1,9 +1,15 @@
 <body class="recipes">
 
   <header class="page-header">
-    <h1>
-      Below are your saved recipes!
-    </h1>
+    <% if @path == 'my_recipes' %>
+      <h1>
+        Here are your recipes!
+      </h1>
+    <% else %>
+      <h1>
+        Here are your friends' recipes!
+      </h1>
+    <% end %>
   </header>
 
   <% if @path == 'my_recipes' %>
@@ -11,70 +17,68 @@
       <%= link_to 'Upload Recipe', new_my_recipe_path %>
     </div>
   <% end %>
-
-  <% @recipes.each do |recipe| %>
-    <div class="saved-recipes container">
-      <div>
-        <% if recipe.web_image %>
-          <img src=<%= recipe.web_image %> alt="Soup image" width="200" height="200">
-        <% else %>
-          <img src=<%= recipe.image %> alt="Soup image" width="200" height="200">
-        <% end %>
-      </div>
-      <div class="recipe-details">
-        <div class="recipe-name">
-          <% if @path == 'my_recipes' %>
-            <%= link_to "#{recipe.name}", "/my_recipe/#{recipe.id}" %>
-          <% else %>
-            <%= link_to "#{recipe.name}", "/my_recipe/friends_recipes/#{recipe.id}" %>
-          <% end %>
-        </div>
-
-        <% if current_user.id != recipe.user_id %>
-          <div class="saved-by">
-            Recipe saved by <%= recipe.user.first_name %> <%= recipe.user.last_name %>
-          </div>
-        <% end %>
-
-        <% if recipe.description %>
-          <div class="description">
-            <h4>Description:</h4>
-            <p><%= recipe.description %></p>
-          </div>
-        <% end %>
-
-        <% if recipe.cooking_time %>
-          <div class="cooking-time">
-            <h4>Cooking Time:</h4>
-            <p><%= recipe.cooking_time %></p>
-          </div>
-        <% end %>
-
-        <% if recipe.source %>
-          <div class="source">
-            <h4>Source:</h4>
-            <p><%= recipe.source %></p>
-          </div>
-        <% end %>
-
-        <% if current_user.id == recipe.user_id %>
-          <div class="actions fa-icon">
-            <p>
-            <% if !recipe.recipe_url %>
-              <%= link_to edit_my_recipe_path(recipe.id) do %><%= fa_icon "edit lg", class: "green" %><% end %> |
+  <div class="body-content">
+    <div>
+      <% @recipes.each do |recipe| %>
+        <div class="saved-recipes container">
+          <div>
+            <% if recipe.web_image %>
+              <img src=<%= recipe.web_image %> alt="Soup image" width="200" height="200">
+            <% else %>
+              <img src=<%= recipe.image %> alt="Soup image" width="200" height="200">
             <% end %>
-            <%= link_to my_recipe_path(recipe.id), method: :delete, data: { confirm: 'Delete this Recipe?' } do %><%= fa_icon "trash lg", class: "red" %><% end %>
-            </p>
           </div>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
+          <div class="recipe-details">
+            <div class="recipe-name">
+              <% if @path == 'my_recipes' %>
+                <%= link_to "#{recipe.name}", "/my_recipe/#{recipe.id}" %>
+              <% else %>
+                <%= link_to "#{recipe.name}", "/my_recipe/friends_recipes/#{recipe.id}" %>
+              <% end %>
+            </div>
 
-  <% if @recipe %>
-    <div class="recipe-info container">
-      <%= render partial: 'saved_recipes/recipe', locals: { recipe: @recipe, current_user: current_user } %>
+            <% if current_user.id != recipe.user_id %>
+              <p>
+                Recipe saved by <%= recipe.user.first_name %> <%= recipe.user.last_name %>
+              </p>
+            <% end %>
+
+            <% if recipe.source %>
+              <p>
+                Source: <%= link_to "#{recipe.source}", "#{recipe.recipe_url}", target: '_blank' %>
+              </p>
+            <% end %>
+
+            <% if recipe.cooking_time %>
+              </p>
+                Cooking time: <%= recipe.cooking_time %>
+              </p>
+            <% end %>
+
+            <% if recipe.description %>
+              <div class="description">
+                <h4>Description:</h4>
+                <p><%= recipe.description %></p>
+              </div>
+            <% end %>
+
+            <% if current_user.id == recipe.user_id %>
+              <div class="actions fa-icon">
+                <p>
+                <% if !recipe.recipe_url %>
+                  <%= link_to edit_my_recipe_path(recipe.id) do %><%= fa_icon "edit lg", class: "green" %><% end %> |
+                <% end %>
+                <%= link_to my_recipe_path(recipe.id), method: :delete, data: { confirm: 'Delete this Recipe?' } do %><%= fa_icon "trash lg", class: "red" %><% end %>
+                </p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+    <% if @recipe %>
+      <%= render partial: 'saved_recipes/recipe', locals: { recipe: @recipe, current_user: current_user } %>
+    <% end %>
+  </div>
 
 </body>

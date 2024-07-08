@@ -1,4 +1,5 @@
-<div class="recipe-info">
+<div class="recipe-info container">
+  <h2 class="recipe-name"><%= recipe.name %></h2>
   <% if recipe.web_image %>
     <img src=<%= recipe.web_image %> alt="Soup image" width="200" height="200">
   <% else %>
@@ -17,7 +18,7 @@
   <% if recipe.directions %>
     <h5><%= recipe.directions %></h5>
   <% else %>
-    <h5><a href="<%= recipe.recipe_url %>" class="recipe-link">Recipe link!</a></h5>
+    <h5>Find recipe by clicking <%= link_to "HERE!", "#{recipe.recipe_url}", target: '_blank' %></h5>
   <% end %>
 
   <% if current_user %>
