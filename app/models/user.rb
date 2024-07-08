@@ -1,18 +1,15 @@
 class User < ApplicationRecord
 
-  before_destroy :destroy_recipes
-  before_destroy :destroy_items
-  before_destroy :destroy_reviews
-
   mount_uploader :profile_img, UserProfileImageUploader
 
   has_secure_password
 
-  has_many :recipes
-  has_many :items
-  has_many :friends, class_name: 'Friend', foreign_key: 'user_id'
-  has_many :inverse_friends, class_name: 'Friend', foreign_key: 'friend_id'
-  has_many :reviews
+  has_many :recipes, dependent: :destroy
+  has_many :items, dependent: :destroy
+  has_many :friends, class_name: 'Friend', foreign_key: 'user_id', dependent: :destroy
+  has_many :inverse_friends, class_name: 'Friend', foreign_key: 'friend_id', dependent: :destroy
+  has_many :reviews, dependent: :destroy
+  has_many :events, dependent: :destroy
   
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -28,20 +25,6 @@ class User < ApplicationRecord
     else
       return nil
     end
-  end
-
-  private
-
-  def destroy_recipes
-    self.recipes.destroy_all
-  end
-
-  def destroy_items
-    self.items.destroy_all
-  end
-
-  def destroy_reviews
-    self.reviews.destroy_all
   end
 
 end
