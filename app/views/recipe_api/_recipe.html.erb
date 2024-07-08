@@ -20,7 +20,6 @@
             <%= form_with url: "/recipes/#{current_user.id}", method: :post do |form| %>
               <%= hidden_field :name, hit['recipe']['label'] %>
               <%= hidden_field :image, hit['recipe']['image'] %>
-              <%= hidden_field :description, 'no description' %>
               <%= hidden_field :cooking_time, "#{hit['recipe']['totalTime']} minutes" %>
               <%= hidden_field :source, hit['recipe']['source'] %>
               <%= hidden_field :recipe_url, hit['recipe']['url'] %>
