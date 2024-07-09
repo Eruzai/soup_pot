@@ -1,6 +1,6 @@
 .home-page {
   background-image: url('point3d-commercial-imaging-ltd-0dj9V9s-R9c-unsplash.jpg');
-  background-position: 0px -50px;
+  background-position: center -50px;
   
   h1 {
     font-size: 3.5em;
@@ -15,7 +15,7 @@
     transition: transform 0.3s ease;
     margin: 0px;
   }
-  
+
   .container:hover {
     transform: scale(1.05);
     text-decoration: underline;
@@ -26,7 +26,6 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 50px;
-    margin-right: 225px;
     width: 80%;
   }
 }
