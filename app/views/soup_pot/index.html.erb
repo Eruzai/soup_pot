@@ -10,20 +10,23 @@
   </header>
 
   <div class="links-container">
-    <% if current_user %>
-      <%= month_calendar(events: @my_events + @friends_events) do |date, events| %>
-        <div class="events-link" onclick='window.location.href="/events/<%= events.pluck(:id) %>"'>
-          <%= date.day %>
-          <% events.each do |event| %>
-            <% if event.user_id == current_user.id %>
-              <%= fa_icon "circle", class: "green" %>
-            <% else %>
-              <%= fa_icon "circle", class: "red" %>
+    <div class='simple-calendar'>
+      <% if current_user %>
+        <%= month_calendar(events: @my_events + @friends_events) do |date, events| %>
+          <div class="events-link" onclick='window.location.href="/events/<%= events.pluck(:id) %>"'>
+            <%= date.day %>
+            <% events.each do |event| %>
+              <% if event.user_id == current_user.id %>
+                <%= fa_icon "circle", class: "green" %>
+              <% else %>
+                <%= fa_icon "circle", class: "red" %>
+              <% end %>
             <% end %>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+      <%= link_to 'create event', new_event_path %>
+    </div>
     <div class="lets-cook container">
       <%= link_to 'Lets Cook!', '/recipes' %>
     </div>
