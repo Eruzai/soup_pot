@@ -8,7 +8,6 @@
   width: 100%;
 }
 
-
 .navbar-logo h1 {
   margin: 0;
   font-size: 4em;
@@ -23,13 +22,11 @@
   text-decoration: underline;
 }
 
-
 .navbar-right {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 }
-
 
 .navbar-user {
   justify-content: space-between;
@@ -63,6 +60,7 @@
   transition: background-color 0.3s;
 }
 
-.navbar-links a:hover {
+a:hover {
   background-color: #555;
+  text-decoration: underline;
 }

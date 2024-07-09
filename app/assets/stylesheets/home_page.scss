@@ -13,6 +13,7 @@
   .container {
     font-size: 2em;
     transition: transform 0.3s ease;
+    margin: 0px;
   }
   
   .container:hover {
@@ -23,7 +24,9 @@
   .links-container {
     display: flex;
     align-items: center;
-    margin-top: 100px;
+    justify-content: space-between;
+    margin-top: 50px;
+    margin-right: 225px;
     width: 80%;
   }
 }
