@@ -8,7 +8,6 @@
       What are we creating today?
     </h3>
   </header>
-
   <div class="links-container">
     <% if current_user %>
       <%= month_calendar(events: @my_events + @friends_events) do |date, events| %>
