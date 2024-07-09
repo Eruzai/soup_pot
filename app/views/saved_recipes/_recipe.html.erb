@@ -5,6 +5,12 @@
   <% else %>
     <img src=<%= recipe.image %> alt="Soup image" width="200" height="200">
   <% end %>
+  
+  <% if @avg_rating %>
+    <h2>Average Rating: <%= @avg_rating %>/5</h2>
+  <% else %>
+    <h2>Average Rating: There are no ratings yet!</h2>
+  <% end %>
 
   <h2>Ingredients:</h2>
   <ul>
@@ -22,6 +28,7 @@
   <% end %>
 
   <% if current_user %>
+    <h2>Reviews and Comments:</h2>
     <%= form_for [recipe, Review.new] do |form| %>
       <div class="form-group">
         <%= form.label :Write_a_review! %>
@@ -39,23 +46,25 @@
 
   <div class="reviews">
     <% recipe.reviews.reverse_each do |review| %>
-      <% if review.rating %>
-        <p>Rating: <%= review.rating %>/5</p>
-        <p>Review: <%= review.comment %></p>
-      <% end %>
-
-      <% if current_user && current_user.id == review.user_id %>
-        <%= link_to edit_recipe_review_path(recipe_id: recipe.id, id: review.id), class: 'btn-edit' do %>
-          <%= fa_icon "edit", text: 'Edit', class: 'fa-icon' %>
+      <div class="review-details">
+        <% if review.rating %>
+          <h5>Posted by: <%= review.user.first_name %> <%= review.user.last_name %></h5>
+          <p>Rating: <%= review.rating %>/5</p>
+          <p>Comments: <%= review.comment %></p>
         <% end %>
 
-        <%= button_to recipe_review_path(recipe_id: recipe.id, id: review.id),
-          method: :delete,
-          data: { confirm: "Delete this review?" },
-          class: 'btn-delete' do %>
-            <%= fa_icon "trash", text: 'Delete', class: 'fa-icon' %>
+        <% if current_user && current_user.id == review.user_id %>
+          <%= link_to edit_recipe_review_path(recipe_id: recipe.id, id: review.id) do %>
+            <%= fa_icon "edit", text: 'Edit', class: 'fa-icon green' %>
+          <% end %>
+            |
+          <%= link_to recipe_review_path(recipe_id: recipe.id, id: review.id),
+            method: :delete,
+            data: { confirm: "Delete this review?" } do %>
+              <%= fa_icon "trash", text: 'Delete', class: 'fa-icon red' %>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     <% end %>
   </div>
 </div>
