@@ -7,6 +7,7 @@ class SavedRecipesController < ApplicationController
       @ingredients = query_recipe_ingredients_to_string(@recipe)
       @review = @recipe.reviews.build
       @reviews = @recipe.reviews
+      @avg_rating = @recipe.reviews.average(:rating)
     end
     @user = User.find (current_user.id)
     @recipes = @user.recipes.all
@@ -19,6 +20,7 @@ class SavedRecipesController < ApplicationController
       @ingredients = query_recipe_ingredients_to_string(@recipe)
       @review = @recipe.reviews.build
       @reviews = @recipe.reviews
+      @avg_rating = @recipe.reviews.average(:rating)
     end
     @friends = @user.friends.where(pending: false).map(&:friend) + @user.inverse_friends.where(pending: false).map(&:user)
     @recipes = @friends.flat_map(&:recipes)
