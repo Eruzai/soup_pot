@@ -1,0 +1,26 @@
+<body class="events-page">
+  <header class="page-header">
+    <h1>
+      This day's events!
+    </h1>
+  </header>
+
+  <% @events.each do |event| %>
+    <div class="container">
+      <h3>
+        <%= event.name %>
+      </h3>
+      <p>
+        <% if current_user.id == event.user_id %>
+          This is your event!
+        <% else %>
+          Created by: <%= event.user.first_name %> <%= event.user.last_name %>
+        <% end %>
+      </p>
+      <p>
+        <%= event.start_time %>
+      </p>
+    </div>
+  <% end %>
+
+</body>
