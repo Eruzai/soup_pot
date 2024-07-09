@@ -27,8 +27,10 @@ class RecipeApiController < ApplicationController
   end
 
   def search
-    @user = User.find(current_user.id)
-    @items = @user.items.all
+    if current_user
+      @user = User.find(current_user.id)
+      @items = @user.items.all
+    end
     app_id = ENV.fetch('EDAMAM_APPLICATION_ID')
     key = ENV.fetch('EDAMAM_APPLICATION_KEY')
     response = RestClient.get("https://api.edamam.com/api/recipes/v2?type=public&q=#{ingredients_query}%20&app_id=#{app_id}&app_key=#{key}&dishType=Soup")
