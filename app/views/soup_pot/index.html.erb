@@ -12,14 +12,16 @@
   <div class="links-container">
     <% if current_user %>
       <%= month_calendar(events: @my_events + @friends_events) do |date, events| %>
-        <%= date.day %>
-        <% events.each do |event| %>
-          <% if event.user_id == current_user.id %>
-            <%= fa_icon "circle", class: "green" %>
-          <% else %>
-            <%= fa_icon "circle", class: "red" %>
+        <div class="events-link" onclick='window.location.href="/events/<%= events.pluck(:id) %>"'>
+          <%= date.day %>
+          <% events.each do |event| %>
+            <% if event.user_id == current_user.id %>
+              <%= fa_icon "circle", class: "green" %>
+            <% else %>
+              <%= fa_icon "circle", class: "red" %>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       <% end %>
     <% end %>
     <div class="container">
