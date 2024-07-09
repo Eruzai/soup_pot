@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
       if current_user.id == @recipe.user_id
         redirect_to "/my_recipe/#{@recipe.id}"
       else
-         redirect_to "/my_recipe/friends_recipes/#{@recipe.id}"
+        redirect_to "/my_recipe/friends_recipes/#{@recipe.id}"
       end
     else
       render 'saved_recipes/index'
@@ -26,7 +26,7 @@ class ReviewsController < ApplicationController
       if current_user.id == @recipe.user_id
         redirect_to "/my_recipe/#{@recipe.id}"
       else
-         redirect_to "/my_recipe/friends_recipes/#{@recipe.id}"
+        redirect_to "/my_recipe/friends_recipes/#{@recipe.id}"
       end
     else
       render :new
