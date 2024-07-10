@@ -1,4 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :user
   belongs_to :recipe, optional: true
+
+  has_many :attendees, dependent: :destroy
 end
