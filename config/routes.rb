@@ -38,4 +38,9 @@ Rails.application.routes.draw do
 
   resources :events, only: [:new, :create, :destroy, :edit, :update, :index]
   get '/events/:ids' => 'events#index'
+
+  post '/attendees/invite' => 'attendees#send_invite'
+  post '/attendees/accept/:id' => 'attendees#accept_invite'
+  delete '/attendees/delete/:id' => 'attendees#remove_attendee'
+
 end
