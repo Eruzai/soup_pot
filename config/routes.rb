@@ -37,5 +37,5 @@ Rails.application.routes.draw do
   get '/my_recipe/friends_recipes/:id' => 'saved_recipes#friends_recipes'
 
   resources :events, only: [:new, :create, :destroy, :edit, :update, :index]
-  # get '/events/:ids' => 'events#show'
+  get '/events/:ids' => 'events#index'
 end

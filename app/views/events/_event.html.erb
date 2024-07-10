@@ -1,35 +1,26 @@
-<body class="events-page">
-
-  <% @events.each do |event| %>
-    <div class="container">
-      <h3>
-        <%= event.name %>
-      </h3>
-      <p>
-        <% if current_user.id == event.user_id %>
-          This is your event!
-        <% else %>
-          Created by: <%= event.user.first_name %> <%= event.user.last_name %>
-        <% end %>
-      </p>
-      <p>
-        <%= event.start_time %>
-      </p>
-
+<% events.each do |event| %>
+  <div class="container">
+    <h3>
+      <%= event.name %>
+    </h3>
+    <p>
       <% if current_user.id == event.user_id %>
-        <div class="actions fa-icon">
-          <p>
-            <%= link_to edit_event_path(event.id) do %><%= fa_icon "edit lg", class: "green" %><% end %>
-            <%= link_to event_path(event.id), method: :delete, data: { confirm: 'Delete this event??' } do %><%= fa_icon "trash lg", class: "red" %><% end %>
-          </p>
-        </div>
+        This is your event!
+      <% else %>
+        Created by: <%= event.user.first_name %> <%= event.user.last_name %>
       <% end %>
-    </div>
-  <% end %>
+    </p>
+    <p>
+      <%= event.start_time %>
+    </p>
 
-  <div class="attribution">
-    Photo by <a href="https://unsplash.com/@3dottawa?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Point3D Commercial Imaging Ltd.</a> on <a href="https://unsplash.com/photos/a-kitchen-with-white-cabinets-and-stainless-steel-appliances-0dj9V9s-R9c?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+    <% if current_user.id == event.user_id %>
+      <div class="actions fa-icon">
+        <p>
+          <%= link_to edit_event_path(event.id) do %><%= fa_icon "edit lg", class: "green" %><% end %>
+          <%= link_to event_path(event.id), method: :delete, data: { confirm: 'Delete this event??' } do %><%= fa_icon "trash lg", class: "red" %><% end %>
+        </p>
+      </div>
+    <% end %>
   </div>
-
-</body>
-
+<% end %>
