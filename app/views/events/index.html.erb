@@ -31,7 +31,7 @@
     </div>
 
     <% if @events %>
-      <%= render partial: 'event', locals: { events: @events } %>
+      <%= render partial: 'event', locals: { events: @events, invite_options: @invite_options, invites: @invites } %>
     <% end %>
   </div>
   <div class="attribution">

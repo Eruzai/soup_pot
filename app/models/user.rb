@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :inverse_friends, class_name: 'Friend', foreign_key: 'friend_id', dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :events, dependent: :destroy
+  has_many :attendees, dependent: :destroy
   
   validates :first_name, presence: true
   validates :last_name, presence: true
