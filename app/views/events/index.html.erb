@@ -6,7 +6,7 @@
     </h1>
   </header>
 
-  <div class='simple-calendar'>
+  <div class='container mt-5 text-center'>
     <%= month_calendar(events: @my_events + @friends_events) do |date, events| %>
       <div class="events-link" onclick='window.location.href="/events/<%= events.pluck(:id) %>"'>
         <%= date.day %>
@@ -20,7 +20,7 @@
       </div>
     <% end %>
     <%= link_to 'Create Event', new_event_path %>
-    <p><%= fa_icon "circle", class: "green" %> your event | <%= fa_icon "circle", class: "red" %> friend's event | yellow: current day</p>
+    <p class="legends"><%= fa_icon "circle", class: "green" %> your event | <%= fa_icon "circle", class: "red" %> friend's event | <%= fa_icon "circle", class: "yellow" %> current day</p>
   </div>
 
   <% if @events %>
