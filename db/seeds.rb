@@ -47,6 +47,21 @@ puts "Creating Events..."
 
 puts "Events Created!"
 
+## Create Attendees and Invitations
+
+puts "Creating Attendees and Invitations"
+
+Attendee.create!(user_id: 3, event_id: 1, attending: false)
+Attendee.create!(user_id: 4, event_id: 1, attending: true)
+Attendee.create!(user_id: 3, event_id: 2, attending: true)
+Attendee.create!(user_id: 4, event_id: 2, attending: true)
+Attendee.create!(user_id: 3, event_id: 6, attending: false)
+Attendee.create!(user_id: 4, event_id: 6, attending: false)
+Attendee.create!(user_id: 3, event_id: 7, attending: true)
+Attendee.create!(user_id: 4, event_id: 7, attending: false)
+
+puts "Events now have Attendees and Invitations"
+
 ## Create Friendships
 
 puts "Creating Friendships..."
