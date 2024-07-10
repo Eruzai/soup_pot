@@ -14,15 +14,23 @@ class AttendeesController < ApplicationController
     end
   end
 
-  # def accept_invite
-  #   @attendee = Attendee.where (user_id: params[:friend_id], event_id: params[:event_id])
-  #   @attendee.update(attending: true)
-  # end
+  def accept_invite
+    @attendee = Attendee.find_by(accept_invite_params)
+    @attendee.update(attending: true)
 
-  # def remove_attendee
-  #   @attendee = Attendee.where (user_id: params[:friend_id], event_id: params[:event_id])
-  #   @attendee.destroy
-  # end
+    if @attendee.save
+      redirect_to session.delete(:previous_url), allow_other_host: true || root_path
+    end
+  end
+
+  def remove_attendee
+    @attendee = Attendee.find_by(remove_attendee_params)
+    @attendee.destroy
+
+    if @attendee.destroy
+      redirect_to session.delete(:previous_url), allow_other_host: true || root_path
+    end
+  end
 
   private
 
@@ -36,6 +44,20 @@ class AttendeesController < ApplicationController
       event_id: params[:event_id].keys.join(""),
       attending: false
     }
+  end
+
+  def remove_attendee_params
+    params.permit(
+      :user_id,
+      :event_id
+    )
+  end
+
+  def accept_invite_params
+    params.permit(
+      :user_id,
+      :event_id
+    )
   end
 
 end
