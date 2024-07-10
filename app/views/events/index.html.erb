@@ -1,0 +1,27 @@
+<body class="events-page">
+
+  <header class="page-header">
+    <h1>
+      Events!
+    </h1>
+  </header>
+
+  <div class='simple-calendar'>
+    <%= month_calendar(events: @my_events + @friends_events) do |date, events| %>
+      <div class="events-link" onclick='window.location.href="/events?date=<%= date.to_date %>"'>
+        <%= date.day %>
+        <% events_for_day = events.select { |event| event.start_time.to_date == date } %>
+        <% events_for_day.each do |event| %>
+          <%= fa_icon "circle", class: event.user_id == current_user.id ? "green" : "red" %>
+        <% end %>
+      </div>
+    <% end %>
+    <%= link_to 'Create Event', new_event_path %>
+    <p>green: your event | red: friend's event | yellow: current day</p>
+  </div>
+
+  <% if @events %>
+    <%= render partial: 'events/event', locals: { events: @events, current_user: current_user } %>
+  <% end %>
+
+</body>
