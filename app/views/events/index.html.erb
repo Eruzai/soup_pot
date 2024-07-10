@@ -6,27 +6,34 @@
     </h1>
   </header>
 
-  <div class='container mt-5 text-center'>
-    <%= month_calendar(events: @my_events + @friends_events) do |date, events| %>
-      <div class="events-link" onclick='window.location.href="/events/<%= events.pluck(:id) %>"'>
-        <%= date.day %>
-        <% events.each do |event| %>
-          <% if event.user_id == current_user.id %>
-            <%= fa_icon "circle", class: "green" %>
-          <% else %>
-            <%= fa_icon "circle", class: "red" %>
+  <div class="body-content">
+    <div class='container mt-5 text-center'>
+      <%= month_calendar(events: @my_events + @friends_events) do |date, events| %>
+        <div class="events-link" onclick='window.location.href="/events/<%= events.pluck(:id) %>"'>
+          <%= date.day %>
+          <% events.each do |event| %>
+            <% if event.user_id == current_user.id %>
+              <%= fa_icon "circle", class: "green" %>
+            <% else %>
+              <%= fa_icon "circle", class: "red" %>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
+      <% end %>
+      <div class="form-group">
+        <%= link_to 'Create Event', new_event_path, class: "btn btn-primary" %>
       </div>
+      <p class="legends">
+        <%= fa_icon "circle", class: "green" %> your event |
+        <%= fa_icon "circle", class: "red" %> friend's event |
+        <%= fa_icon "circle", class: "yellow" %> current day
+      </p>
+    </div>
+
+    <% if @events %>
+      <%= render partial: 'event', locals: { events: @events } %>
     <% end %>
-    <%= link_to 'Create Event', new_event_path %>
-    <p class="legends"><%= fa_icon "circle", class: "green" %> your event | <%= fa_icon "circle", class: "red" %> friend's event | <%= fa_icon "circle", class: "yellow" %> current day</p>
   </div>
-
-  <% if @events %>
-    <%= render partial: 'event', locals: { events: @events } %>
-  <% end %>
-
   <div class="attribution">
     Photo by <a href="https://unsplash.com/@3dottawa?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Point3D Commercial Imaging Ltd.</a> on <a href="https://unsplash.com/photos/a-kitchen-with-white-cabinets-and-stainless-steel-appliances-0dj9V9s-R9c?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
   </div>

@@ -1,26 +1,30 @@
-<% events.each do |event| %>
-  <div class="container">
-    <h3>
-      <%= event.name %>
-    </h3>
-    <p>
-      <% if current_user.id == event.user_id %>
-        This is your event!
-      <% else %>
-        Created by: <%= event.user.first_name %> <%= event.user.last_name %>
-      <% end %>
-    </p>
-    <p>
-      <%= event.start_time %>
-    </p>
+<div class="event-info">
+  <% events.each do |event| %>
+    <div class="container">
+      <h3>
+        <%= event.name %>
+      </h3>
+      <p>
+        <% if current_user.id == event.user_id %>
+          This is your event!
+        <% else %>
+          Created by: <%= event.user.first_name %> <%= event.user.last_name %>
+        <% end %>
+      </p>
+      <p>
+        <%= event.start_time %>
+      </p>
 
-    <% if current_user.id == event.user_id %>
-      <div class="actions fa-icon">
-        <p>
-          <%= link_to edit_event_path(event.id) do %><%= fa_icon "edit lg", class: "green" %><% end %>
-          <%= link_to event_path(event.id), method: :delete, data: { confirm: 'Delete this event??' } do %><%= fa_icon "trash lg", class: "red" %><% end %>
-        </p>
-      </div>
-    <% end %>
-  </div>
-<% end %>
+      <% if current_user.id == event.user_id %>
+        <div class="actions">
+          <%= link_to edit_event_path(event.id) do %>
+            <%= fa_icon "edit lg", class: "fa-icon green" %> | 
+          <% end %>
+          <%= link_to event_path(event.id), method: :delete, data: { confirm: 'Delete this event?' } do %>
+            <%= fa_icon "trash lg", class: "fa-icon red" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
