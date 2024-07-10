@@ -25,6 +25,16 @@
           <% end %>
         </div>
       <% end %>
+
+      <% if current_user.id == event.user_id %>
+        <div class="invite-form">
+          <%= form_with url: "/attendees/invite", method: :post do |form| %>
+            <%= form.select :friend_id, invite_options %>
+            <%= hidden_field :event_id, event.id %>
+            <%= form.submit 'Send Invitation' %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   <% end %>
 </div>
