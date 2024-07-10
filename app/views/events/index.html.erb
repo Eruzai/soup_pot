@@ -20,14 +20,14 @@
           <% end %>
         </div>
       <% end %>
+      <p class="legends">
+      <%= fa_icon "circle", class: "green" %> your event |
+      <%= fa_icon "circle", class: "red" %> friend's event |
+      <%= fa_icon "square", class: "yellow" %> current day
+      </p>
       <div class="form-group">
         <%= link_to 'Create Event', new_event_path, class: "btn btn-primary" %>
       </div>
-      <p class="legends">
-        <%= fa_icon "circle", class: "green" %> your event |
-        <%= fa_icon "circle", class: "red" %> friend's event |
-        <%= fa_icon "circle", class: "yellow" %> current day
-      </p>
     </div>
 
     <% if @events %>
