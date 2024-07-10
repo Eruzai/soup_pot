@@ -22,6 +22,9 @@
         <div class="invited-friend">
           <% if invite.attending == false %>
             <%= invite.user.first_name %> <%= invite.user.last_name %>
+            <% if current_user.id == event.user_id %>
+              <%= link_to "/attendees/delete?user_id=#{invite.user.id}&event_id=#{event.id}", method: :delete, data: { confirm: 'Do you want to cancel this invitaion?' } do %><%= fa_icon "trash lg", class: "fa-icon red" %><% end %>
+            <% end %>
           <% end %>
         </div>
       <% end %>
@@ -33,6 +36,11 @@
         <div class="invited-friend">
           <% if invite.attending == true %>
             <%= invite.user.first_name %> <%= invite.user.last_name %>
+            <% if current_user.id == invite.user.id %>
+              <%= link_to "/attendees/delete?user_id=#{invite.user.id}&event_id=#{event.id}", method: :delete, data: { confirm: 'Do you no longer wish to attend this event?' } do %><%= fa_icon "trash lg", class: "fa-icon red" %><% end %>
+            <% elsif current_user.events.exists?(id: event.id) %>
+              <%= link_to "/attendees/delete?user_id=#{invite.user.id}&event_id=#{event.id}", method: :delete, data: { confirm: 'Remove this attendee?' } do %><%= fa_icon "trash lg", class: "fa-icon red" %><% end %>
+            <% end %>
           <% end %>
         </div>
       <% end %>
@@ -56,6 +64,10 @@
             <%= form.submit 'Send Invitation' %>
           <% end %>
         </div>
+      <% end %>
+
+      <% if event.attendees.exists?(user_id: current_user.id, attending: false) %>
+        <%= link_to "attendees/accept?user_id=#{current_user.id}&event_id=#{event.id}", method: :patch do %><%= fa_icon "check lg", text: "accept invitation", class: "fa-icon green" %><% end %>
       <% end %>
     </div>
   <% end %>
