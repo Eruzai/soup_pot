@@ -9,23 +9,17 @@
     </h3>
   </header>
   <div class="links-container">
+
     <% if current_user %>
-      <%= month_calendar(events: @my_events + @friends_events) do |date, events| %>
-        <div class="events-link" onclick='window.location.href="/events/<%= events.pluck(:id) %>"'>
-          <%= date.day %>
-          <% events.each do |event| %>
-            <% if event.user_id == current_user.id %>
-              <%= fa_icon "circle", class: "green" %>
-            <% else %>
-              <%= fa_icon "circle", class: "red" %>
-            <% end %>
-          <% end %>
-        </div>
-      <% end %>
+      <div class="lets-cook container">
+        <%= link_to 'Events', events_path %>
+      </div>
     <% end %>
+
     <div class="lets-cook container">
       <%= link_to 'Lets Cook!', '/recipes' %>
     </div>
+
     <% if current_user %>
       <div class="container">
         <%= link_to 'My Fridge', items_path %>
