@@ -14,12 +14,26 @@
       <p>
         <%= event.start_time %>
       </p>
+      
       <h4>
         Invited:
       </h4>
       <% event.attendees.each do |invite| %>
-        <div class="invited-friends">
-          <%= invite.user.first_name %> <%= invite.user.last_name %>
+        <div class="invited-friend">
+          <% if invite.attending == false %>
+            <%= invite.user.first_name %> <%= invite.user.last_name %>
+          <% end %>
+        </div>
+      <% end %>
+
+      <h4>
+        Attending:
+      </h4>
+      <% event.attendees.each do |invite| %>
+        <div class="invited-friend">
+          <% if invite.attending == true %>
+            <%= invite.user.first_name %> <%= invite.user.last_name %>
+          <% end %>
         </div>
       <% end %>
 
