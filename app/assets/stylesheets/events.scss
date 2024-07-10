@@ -3,12 +3,13 @@
   background-position: center -50px;
 
   .container {
-    margin-bottom: 50px;
     width: 500px;
+    padding: 8px;
+    max-height: 620px;
   }
 
   .legends {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 }
