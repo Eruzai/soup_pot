@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   get '/events/:ids' => 'events#index'
 
   post '/attendees/invite' => 'attendees#send_invite'
-  post '/attendees/accept/:id' => 'attendees#accept_invite'
-  delete '/attendees/delete/:id' => 'attendees#remove_attendee'
+  patch '/events/attendees/accept' => 'attendees#accept_invite'
+  delete '/attendees/delete' => 'attendees#remove_attendee'
 
 end
