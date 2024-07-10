@@ -14,7 +14,7 @@
           <td class="table-data">Action</td>
         </tr>
       </thead>
-      
+
       <tbody>
         <% @items.each do |item| %>
         <tr class="table-row">
@@ -28,7 +28,7 @@
           <%= form_for :item do |form| %>
             <td class="table-data"><%= form.text_field :name %></td>
             <td class="table-data"><%= form.text_field :quantity %></td>
-            <td class="table-data"><%= form.text_field :expiration_date, placeholder: "yyyy-mm-dd" %></td>
+            <td class="table-data"><%= form.date_field :expiration_date %></td>
             <td class="table-data"><%= form.submit %></td>
           <% end %>
         </tr>
