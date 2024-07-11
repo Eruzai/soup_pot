@@ -8,7 +8,7 @@
 
   <div class="body-content">
     <div class='container mt-5 text-center'>
-      <%= month_calendar(events: @my_events + @friends_events) do |date, events| %>
+      <%= month_calendar(events: @my_events + @friends_events + @private_events) do |date, events| %>
         <div class="events-link" onclick='window.location.href="/events/<%= events.pluck(:id) %>"'>
           <%= date.day %>
           <% events.each do |event| %>

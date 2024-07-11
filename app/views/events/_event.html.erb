@@ -7,6 +7,18 @@
         <% end %>
         <%= event.name %>
       </h2>
+      <h3>
+        <% if event.private == true %>
+          This is a private event!
+        <% else %>
+          This is an open event!
+        <% end %>
+        <% if !event.attendees.exists?(user_id: current_user.id, attending: true) %>
+          <%= link_to "attendees/accept?user_id=#{current_user.id}&event_id=#{event.id}", method: :patch do %>
+            <%= fa_icon "check lg", text: "Attend Event", class: "fa-icon green" %>
+          <% end %>
+        <% end %>
+      </h3>
       <p class="event-description">
         <%= event.description %>
       <p>
@@ -63,12 +75,6 @@
             <%= form.submit 'Send Invitation' %>
           <% end %>
         </div>
-      <% end %>
-
-      <% if event.attendees.exists?(user_id: current_user.id, attending: false) %>
-        <%= link_to "attendees/accept?user_id=#{current_user.id}&event_id=#{event.id}", method: :patch do %>
-          <%= fa_icon "check lg", text: "accept invitation", class: "fa-icon green" %>
-        <% end %>
       <% end %>
 
       <% if current_user.id == event.user_id %>
