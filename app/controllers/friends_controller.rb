@@ -1,7 +1,7 @@
 class FriendsController < ApplicationController
 
   def show
-    @search_results = User.where('first_name LIKE ? OR last_name LIKE ?', search_params[:first_name], search_params[:last_name])
+    @search_results = User.where(search_query)
     @user = User.find(current_user.id)
     @friends = @user.friends.where(pending: false).map(&:friend) + @user.inverse_friends.where(pending: false).map(&:user)
     @sent_requests = @user.friends.where(pending: true).map(&:friend)
@@ -38,6 +38,16 @@ class FriendsController < ApplicationController
       :first_name,
       :last_name
     )
+  end
+
+  def search_query
+    if !params[:last_name].present?
+      ["first_name LIKE ?", "%#{search_params[:first_name]}%"]
+    elsif !params[:first_name].present?
+      ["last_name LIKE ?", "%#{search_params[:last_name]}%"]
+    else
+      ["first_name LIKE ? OR last_name LIKE ?", "%#{search_params[:first_name]}%", "%#{search_params[:last_name]}%"]
+    end
   end
 
 end
