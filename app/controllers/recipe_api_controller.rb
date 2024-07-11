@@ -2,13 +2,15 @@ class RecipeApiController < ApplicationController
 
   skip_forgery_protection
 
-  @json = nil
 
   def show
     if current_user
       @user = User.find(current_user.id)
       @items = @user.items.all
     end
+    @json = nil
+    @search_performed = false
+    @empty_search = false
   end
 
   def create
@@ -31,11 +33,18 @@ class RecipeApiController < ApplicationController
       @user = User.find(current_user.id)
       @items = @user.items.all
     end
-    app_id = ENV.fetch('EDAMAM_APPLICATION_ID')
-    key = ENV.fetch('EDAMAM_APPLICATION_KEY')
-    response = RestClient.get("https://api.edamam.com/api/recipes/v2?type=public&q=#{ingredients_query}%20&app_id=#{app_id}&app_key=#{key}&dishType=Soup")
-    @json = JSON.parse response
-
+    if search_params.values.all?(&:blank?)
+      @json = nil
+      @search_performed = true
+      @empty_search = true
+    else
+      app_id = ENV.fetch('EDAMAM_APPLICATION_ID')
+      key = ENV.fetch('EDAMAM_APPLICATION_KEY')
+      response = RestClient.get("https://api.edamam.com/api/recipes/v2?type=public&q=#{ingredients_query}&app_id=#{app_id}&app_key=#{key}&dishType=Soup")
+      @json = JSON.parse(response)
+      @search_performed = true
+      @empty_search = false
+    end
     render :show
   end
 
