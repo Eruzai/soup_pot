@@ -23,13 +23,28 @@ puts "Starting Seed Data Generation"
 
 ## Create User Data
 
-puts "Creating Admin Users..."
+puts "Creating Users..."
 
 @admin1 = User.create!(profile_img: open_asset('default-profile.png'), first_name: 'Charlie', last_name: 'Hansworth', email: 'test1@email.com', password: 'password', password_confirmation: 'password')
 @admin2 = User.create!(profile_img: open_asset('default-profile.png'), first_name: 'Kira', last_name: 'Underhill', email: 'test2@email.com', password: 'password', password_confirmation: 'password')
 @admin3 = User.create!(profile_img: open_asset('default-profile.png'), first_name: 'James', last_name: 'Underhill', email: 'test3@email.com', password: 'password', password_confirmation: 'password')
 @admin4 = User.create!(profile_img: open_asset('default-profile.png'), first_name: 'James', last_name: 'Bond', email: 'test4@email.com', password: 'password', password_confirmation: 'password')
 @admin5 = User.create!(profile_img: open_asset('default-profile.png'), first_name: 'Clark', last_name: 'Kent', email: 'test5@email.com', password: 'password', password_confirmation: 'password')
+User.create!(profile_img: open_asset('default-profile.png'), first_name: 'Jonathan', last_name: 'Kent', email: 'test6@email.com', password: 'password', password_confirmation: 'password')
+User.create!(profile_img: open_asset('default-profile.png'), first_name: 'Lizzy', last_name: 'Branson', email: 'test7@email.com', password: 'password', password_confirmation: 'password')
+User.create!(profile_img: open_asset('default-profile.png'), first_name: 'Emily', last_name: 'Branson', email: 'test8@email.com', password: 'password', password_confirmation: 'password')
+User.create!(profile_img: open_asset('default-profile.png'), first_name: 'Horton', last_name: 'Hears', email: 'test9@email.com', password: 'password', password_confirmation: 'password')
+User.create!(profile_img: open_asset('default-profile.png'), first_name: 'Rebecca', last_name: 'Nona', email: 'test10@email.com', password: 'password', password_confirmation: 'password')
+User.create!(profile_img: open_asset('default-profile.png'), first_name: 'Gomez', last_name: 'Capri', email: 'test11@email.com', password: 'password', password_confirmation: 'password')
+User.create!(profile_img: open_asset('default-profile.png'), first_name: 'Arjen', last_name: 'Bandi', email: 'test12@email.com', password: 'password', password_confirmation: 'password')
+User.create!(profile_img: open_asset('default-profile.png'), first_name: 'Brad', last_name: 'Hensby', email: 'test13@email.com', password: 'password', password_confirmation: 'password')
+User.create!(profile_img: open_asset('default-profile.png'), first_name: 'Chuck', last_name: 'Gorchuck', email: 'test14@email.com', password: 'password', password_confirmation: 'password')
+User.create!(profile_img: open_asset('default-profile.png'), first_name: 'Bruce', last_name: 'Wayne', email: 'test15@email.com', password: 'password', password_confirmation: 'password')
+User.create!(profile_img: open_asset('default-profile.png'), first_name: 'Ash', last_name: 'Ketchum', email: 'test16@email.com', password: 'password', password_confirmation: 'password')
+User.create!(profile_img: open_asset('default-profile.png'), first_name: 'Elvis', last_name: 'Presly', email: 'tes17t@email.com', password: 'password', password_confirmation: 'password')
+User.create!(profile_img: open_asset('default-profile.png'), first_name: 'Greg', last_name: 'Drinkwater', email: 'test18@email.com', password: 'password', password_confirmation: 'password')
+User.create!(profile_img: open_asset('default-profile.png'), first_name: 'Molly', last_name: 'Pond', email: 'test19@email.com', password: 'password', password_confirmation: 'password')
+User.create!(profile_img: open_asset('default-profile.png'), first_name: 'Maria', last_name: 'Gorchuck', email: 'test20@email.com', password: 'password', password_confirmation: 'password')
 
 puts "Users Created!"
 
@@ -69,6 +84,10 @@ puts "Creating Friendships..."
 @admin1.friends.create!(friend_id: 2)
 @admin1.friends.create!(friend_id: 3, pending: false)
 @admin1.friends.create!(friend_id: 4, pending: false)
+@admin1.friends.create!(friend_id: 16, pending: false)
+@admin1.friends.create!(friend_id: 13)
+@admin1.friends.create!(friend_id: 9, pending: false)
+@admin1.friends.create!(friend_id: 19, pending: false)
 @admin5.friends.create!(friend_id: 1)
 @admin2.friends.create!(friend_id: 3, pending: false)
 @admin2.friends.create!(friend_id: 4, pending: false)
