@@ -37,13 +37,13 @@ puts "Users Created!"
 
 puts "Creating Events..."
 
-@admin1.events.create!(name: 'Soup Party!', start_time: '2024-07-16', private: false)
-@admin1.events.create!(name: 'Pot Luck!', start_time: '2024-07-28', private: false)
-@admin1.events.create!(name: 'Emptying my Fridge!', start_time: '2024-08-05', private: false)
-@admin3.events.create!(name: 'Time to Soup!', start_time: '2024-07-16', private: false)
-@admin3.events.create!(name: 'Can I have some More?', start_time: '2024-07-23', private: false)
-@admin2.events.create!(name: 'Soup Event!', start_time: '2024-08-01', private: false)
-@admin2.events.create!(name: 'Soup Soup Soup!', start_time: '2024-07-28', private: false)
+@admin1.events.create!(name: 'Soup Party!', start_time: '2024-07-16', description:'This is the description, just testing!', private: false)
+@admin1.events.create!(name: 'Pot Luck!', start_time: '2024-07-28', description:'This is the description, just testing!', private: false)
+@admin1.events.create!(name: 'Emptying my Fridge!', start_time: '2024-08-05', description:'This is the description, just testing!', private: false)
+@admin3.events.create!(name: 'Time to Soup!', start_time: '2024-07-16',description:'This is the description, just testing!', private: false)
+@admin3.events.create!(name: 'Can I have some More?', start_time: '2024-07-23',description:'This is the description, just testing!', private: false)
+@admin2.events.create!(name: 'Soup Event!', start_time: '2024-08-01',description:'This is the description, just testing!', private: false)
+@admin2.events.create!(name: 'Soup Soup Soup!', start_time: '2024-07-28',description:'This is the description, just testing!', private: false)
 
 puts "Events Created!"
 
