@@ -9,10 +9,11 @@
 
   .form-and-fridge {
     display: flex;
+    max-height: 500px;
   }
 
   .fridge {
-    margin: 15px;
+    margin: 37px 15px 15px 15px;
     max-width: 116px;
   }
 
@@ -57,4 +58,24 @@
     border-radius: 8px;
   }
 
+  .no-results {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #f0f0f0;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.2em;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .recipe-api-hits {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }

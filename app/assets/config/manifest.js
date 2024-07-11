@@ -4,3 +4,4 @@
 //= link_tree ../../../vendor/javascript .js
 //= link fridge.js
 //= link recipe.js
+//= link recipe_api.js

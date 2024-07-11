@@ -1,4 +1,4 @@
-<% if @json %>
+<% if @json && @json['hits'].present? %>
   <% @json['hits'].each do |hit| %>
     <div class="api-hits container">
       <div>
@@ -14,7 +14,7 @@
         </p>
           Cooking time: <%= hit['recipe']['totalTime'] %> minutes
         </p>
-        
+
         <% if current_user %>
           <div class="actions">
             <%= form_with url: "/recipes/#{current_user.id}", method: :post do |form| %>
@@ -31,4 +31,8 @@
       </div>
     </div>
   <% end %>
+  <% else %>
+  <div class="no-results">
+    <p>No recipes found. Please try again with different ingredients.</p>
+  </div>
 <% end %>
