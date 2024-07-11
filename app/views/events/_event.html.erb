@@ -2,8 +2,16 @@
   <% events.each do |event| %>
     <div class="container">
       <h2 class="event-name">
-        <% if current_user.id == event.user_id %>
-          <%= fa_icon "circle", class: "green" %>
+        <% if event.attendees.exists?(user_id: current_user.id, attending: true) %>
+          <%= fa_icon "check", class: "green" %>
+        <% elsif event.user_id == current_user.id && event.private == true %>
+          <%= fa_icon "star", class: "light-green" %>
+        <% elsif event.private == true %>
+          <%= fa_icon "star", class: "pink" %>
+        <% elsif current_user.id == event.user_id %>
+          <%= fa_icon "circle", class: "light-green" %>
+        <% else %>
+          <%= fa_icon "circle", class: "pink" %>
         <% end %>
         <%= event.name %>
       </h2>
@@ -15,20 +23,23 @@
         <% end %>
         <% if !event.attendees.exists?(user_id: current_user.id, attending: true) %>
           <%= link_to "attendees/accept?user_id=#{current_user.id}&event_id=#{event.id}", method: :patch do %>
-            <%= fa_icon "check lg", text: "Attend Event", class: "fa-icon green" %>
+            <%= fa_icon "check lg", text: "Attend Event", class: "green" %>
           <% end %>
         <% end %>
       </h3>
+
+      <% if current_user.id != event.user_id %>
+        <h3 class="event-owner">
+          Event host: <%= event.user.first_name %> <%= event.user.last_name %>
+        </h3>
+      <% end %>
+
       <p class="event-description">
         <%= event.description %>
       <p>
-      <h3 class="event-owner">
-        <% if current_user.id != event.user_id %>
-          Created by: <%= event.user.first_name %> <%= event.user.last_name %>
-        <% end %>
-      </h3>
+
       <p class="event-time">
-        Event starts at: <%= event.start_time %>
+        Event scheduled for: <%= event.start_time %>
       </p>
 
       <h4>Invited:</h4>
@@ -39,7 +50,7 @@
               <%= invite.user.first_name %> <%= invite.user.last_name %>
               <% if current_user.id == event.user_id %>
                 <%= link_to "/attendees/delete?user_id=#{invite.user.id}&event_id=#{event.id}", method: :delete, data: { confirm: 'Do you want to cancel this invitation?' } do %>
-                  <%= fa_icon "trash lg", class: "fa-icon red" %>
+                  <%= fa_icon "trash lg", class: "red" %>
                 <% end %>
               <% end %>
             </li>
@@ -55,11 +66,11 @@
               <%= invite.user.first_name %> <%= invite.user.last_name %>
               <% if current_user.id == invite.user.id %>
                 <%= link_to "/attendees/delete?user_id=#{invite.user.id}&event_id=#{event.id}", method: :delete, data: { confirm: 'Do you no longer wish to attend this event?' } do %>
-                  <%= fa_icon "trash lg", class: "fa-icon red" %>
+                  <%= fa_icon "trash lg", class: "red" %>
                 <% end %>
               <% elsif current_user.events.exists?(id: event.id) %>
                 <%= link_to "/attendees/delete?user_id=#{invite.user.id}&event_id=#{event.id}", method: :delete, data: { confirm: 'Remove this attendee?' } do %>
-                  <%= fa_icon "trash lg", class: "fa-icon red" %>
+                  <%= fa_icon "trash lg", class: "red" %>
                 <% end %>
               <% end %>
             </li>
@@ -80,10 +91,10 @@
       <% if current_user.id == event.user_id %>
         <div class="actions">
           <%= link_to edit_event_path(event.id) do %>
-            <%= fa_icon "edit lg", class: "fa-icon green" %> |
+            <%= fa_icon "edit lg", class: "green" %> |
           <% end %>
           <%= link_to event_path(event.id), method: :delete, data: { confirm: 'Delete this event?' } do %>
-            <%= fa_icon "trash lg", class: "fa-icon red" %>
+            <%= fa_icon "trash lg", class: "red" %>
           <% end %>
         </div>
       <% end %>

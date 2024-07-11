@@ -12,18 +12,29 @@
         <div class="events-link" onclick='window.location.href="/events/<%= events.pluck(:id) %>"'>
           <%= date.day %>
           <% events.each do |event| %>
-            <% if event.user_id == current_user.id %>
-              <%= fa_icon "circle", class: "green" %>
+            <% if event.attendees.exists?(user_id: current_user.id, attending: true) %>
+              <%= fa_icon "check lg", class: "green" %>
+            <% elsif event.user_id == current_user.id && event.private == true %>
+              <%= fa_icon "star lg", class: "light-green" %>
+            <% elsif event.private == true %>
+              <%= fa_icon "star lg", class: "pink" %>
+            <% elsif current_user.id == event.user_id %>
+              <%= fa_icon "circle lg", class: "light-green" %>
             <% else %>
-              <%= fa_icon "circle", class: "red" %>
+              <%= fa_icon "circle lg", class: "pink" %>
             <% end %>
           <% end %>
         </div>
       <% end %>
       <p class="legends">
-      <%= fa_icon "circle", class: "green" %> your event |
-      <%= fa_icon "circle", class: "red" %> friend's event |
-      <%= fa_icon "square", class: "yellow" %> current day
+      <%= fa_icon "circle lg", class: "light-green" %> your event |
+      <%= fa_icon "star lg", class: "light-green" %> your private event |
+      <%= fa_icon "check lg", class: "green" %> attending event
+      </p>
+      <p class="legends">
+      <%= fa_icon "circle lg", class: "pink" %> friend's event |
+      <%= fa_icon "star lg", class: "pink" %> friend's private event |
+      <%= fa_icon "square lg", class: "yellow" %> current day
       </p>
       <div class="form-group">
         <%= link_to 'Create Event', new_event_path, class: "btn btn-primary" %>
