@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   end
 
   get '/find_friends' => 'friends#show'
+  post '/find_friends' => 'friends#search'
   post '/find_friends/:id' => 'friends#send_request'
   delete '/find_friends/:id' => 'friends#destroy'
   patch '/find_friends/:id' => 'friends#accept_request'
