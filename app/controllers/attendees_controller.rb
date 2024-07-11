@@ -16,7 +16,11 @@ class AttendeesController < ApplicationController
 
   def accept_invite
     @attendee = Attendee.find_by(accept_invite_params)
-    @attendee.update(attending: true)
+    if @attendee.present?
+      @attendee.update(attending: true)
+    else
+      @attendee = Attendee.create(attend_event_params)
+    end
 
     if @attendee.save
       redirect_to session.delete(:previous_url), allow_other_host: true || root_path
@@ -58,6 +62,18 @@ class AttendeesController < ApplicationController
       :user_id,
       :event_id
     )
+  end
+
+  def attend_event_params
+    params.permit(
+      :user_id,
+      :event_id,
+    )
+    return {
+      user_id: params[:user_id],
+      event_id: params[:event_id],
+      attending: true
+    }
   end
 
 end
