@@ -15,7 +15,7 @@ class EventsController < ApplicationController
       start_date = params.fetch(:start_date, Date.today).to_date
       @my_events = Event.where(user_id: current_user.id, start_time: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
       @friends_events = Event.where(user_id: friends_ids, private: false, start_time: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
-      @private_events = Event.joins(:attendees).where(attendees: { user_id: current_user.id }, private: true)
+      @private_events = Event.joins(:attendees).where(attendees: { user_id: current_user.id }, private: true).where.not(user_id: current_user.id)
     end
   end
 
