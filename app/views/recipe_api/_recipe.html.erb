@@ -12,7 +12,11 @@
           Source: <%= link_to "#{hit['recipe']['source']}", "#{hit['recipe']['url']}", target: '_blank' %>
         </p>
         </p>
-          Cooking time: <%= hit['recipe']['totalTime'] %> minutes
+        <% if hit['recipe']['totalTime'] == 0 %>
+            Cooking time: N/A
+          <% else %>
+            Cooking time: <%= hit['recipe']['totalTime'].to_i  %> minutes
+          <% end %>
         </p>
 
         <% if current_user %>
