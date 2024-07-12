@@ -1,14 +1,14 @@
 <body class="events-page">
 
   <header class="page-header">
-      <h1>New Event!</h1>
+      <h1>Tell us about your event!</h1>
   </header>
 
-  <div class='container'>
+  <div class='new-event container'>
     <%= form_with(model: @event, url: events_path) do |form| %>
-      <div class="form-group">
+      <div class="checkbox-container form-group">
         <%= form.label "Private Event?" %>
-        <%= form.check_box :private %>
+        <%= form.check_box :private, class: 'checkbox' %>
       </div>
 
       <div class="form-group">

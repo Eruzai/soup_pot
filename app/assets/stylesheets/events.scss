@@ -15,4 +15,20 @@
     margin: 0px;
   }
 
+  .new-event {
+    width: 500px;
+    margin-bottom: 30px
+  }
+
+  .checkbox {
+    height: 20px;
+    width: 20px;
+    margin-left: 5px;
+  }
+
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+  }
+
 }
