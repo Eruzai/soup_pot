@@ -49,10 +49,10 @@
               </p>
             <% end %>
 
-            <% if recipe.cooking_time %>
-              </p>
-                Cooking time: <%= recipe.cooking_time %>
-              </p>
+            <% if recipe.cooking_time.to_i == 0 %>
+                Cooking time: N/A
+              <% else %>
+                Cooking time: <%= recipe.cooking_time.to_i %> minutes
             <% end %>
 
             <% if recipe.description %>
