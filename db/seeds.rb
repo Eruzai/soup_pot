@@ -131,6 +131,9 @@ puts "Creating Friendships..."
 @admin4.friends.create!(friend_id: 15)
 @admin4.friends.create!(friend_id: 17, pending: false)
 @admin4.friends.create!(friend_id: 20, pending: false)
+Friend.create!(friend_id: 1, user_id: 11)
+Friend.create!(friend_id: 1, user_id: 7)
+Friend.create!(friend_id: 1, user_id: 17)
 
 puts "Some Users are Friends!"
 
