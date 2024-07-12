@@ -56,9 +56,12 @@
   }
 }
 
-.body-content {
+.legends {
   display: flex;
-  flex-direction: row;
   justify-content: space-around;
-  width: 70%;
+}
+
+.create-event-button {
+  display: flex;
+  justify-content: flex-end;
 }

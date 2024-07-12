@@ -3,6 +3,10 @@
   background-position: center -150px;
   margin-bottom: 500px;
 
+  .container {
+    width: fit-content;
+  }
+  
   .saved-recipes {
     display: flex;
     align-items: center;
@@ -13,6 +17,7 @@
     margin-right: 50px;
     text-decoration: none;
   }
+
 
   .body-content {
     display: flex;

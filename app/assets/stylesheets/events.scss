@@ -2,15 +2,16 @@
   background-image: url('point3d-commercial-imaging-ltd-0dj9V9s-R9c-unsplash.jpg');
   background-position: center -50px;
 
-  .container {
-    margin: 7px auto;
-    width: 500px;
-    padding: 8px;
-    max-height: 620px;
+  .body-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
   }
 
-  .legends {
-    display: flex;
-    justify-content: space-around;
+  .calendar {
+    max-width: 600px;
+    height: fit-content;
   }
+
 }
