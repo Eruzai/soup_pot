@@ -52,15 +52,15 @@ puts "Users Created!"
 
 puts "Creating Events..."
 
-@admin1.events.create!(name: 'Soup Party!', start_time: '2024-07-16', description:'This is the description, just testing!', private: false)
-@admin1.events.create!(name: 'Pot Luck!', start_time: '2024-07-28', description:'This is the description, just testing!', private: false)
-@admin1.events.create!(name: 'Emptying my Fridge!', start_time: '2024-08-05', description:'This is the description, just testing!', private: false)
-@admin3.events.create!(name: 'Time to Soup!', start_time: '2024-07-16',description:'This is the description, just testing!', private: false)
-@admin3.events.create!(name: 'Can I have some More?', start_time: '2024-07-23',description:'This is the description, just testing!', private: true)
-@admin2.events.create!(name: 'Soup Event!', start_time: '2024-08-01',description:'This is the description, just testing!', private: false)
-@admin2.events.create!(name: 'Soup Soup Soup!', start_time: '2024-07-28',description:'This is the description, just testing!', private: true)
-@admin4.events.create!(name: 'I Love Soup!', start_time: '2024-07-23',description:'This is the description, just testing!', private: false)
-@admin4.events.create!(name: 'Yes, you can have some more!', start_time: '2024-08-03',description:'This is the description, just testing!', private: false)
+@admin1.events.create!(name: 'Soup Party!', start_time: '2024-07-16', description:'Please bring crackers! Starts at 5PM', private: true)
+@admin1.events.create!(name: 'Pot Luck!', start_time: '2024-07-28', description:'We start with water and end up with soup! Bring something for the pot', private: false)
+@admin1.events.create!(name: 'Emptying my Fridge!', start_time: '2024-08-05', description:'I have food nearing expiry! help me use it!', private: false)
+@admin3.events.create!(name: 'Time to Soup!', start_time: '2024-07-16',description:"It's soup time!", private: false)
+@admin3.events.create!(name: 'Can I have some More?', start_time: '2024-07-23',description:'Seconds are allowed! starts at 6PM', private: true)
+@admin2.events.create!(name: 'Soup Event!', start_time: '2024-08-01',description:'THE PREMIER SOUP EVENT. come around 6:30PM', private: false)
+@admin2.events.create!(name: 'Soup Soup Soup!', start_time: '2024-07-28',description:'Soup for days!', private: true)
+@admin4.events.create!(name: 'I Love Soup!', start_time: '2024-07-23',description:'I just really love soup.', private: false)
+@admin4.events.create!(name: 'Yes, you can have some more!', start_time: '2024-08-03',description:'Come for soup at 4:30PM', private: false)
 
 puts "Events Created!"
 
@@ -172,5 +172,32 @@ puts "Creating Ingredient Lists for Recipes..."
 ["2 tablespoons tomato powder", "1 teaspoon red bell pepper powder", "1/4 teaspoon granulated onion", "Pinch of dried dill, parsley, or basil (optional)", "1 1/4 cups boiling water", "Kosher salt and freshly ground black pepper"].each do |item| @recipe6.ingredients.create!(item: item) end
 
 puts "Recipes have Ingredients!"
+
+## Create Reviews
+
+puts "Write Reviews for Recipes..."
+
+Review.create!(user_id: 3, recipe_id: 1, rating: 5, comment: "This is the best tomato soup I've ever had!")
+Review.create!(user_id: 16, recipe_id: 1, rating: 3, comment: "I've had better...")
+Review.create!(user_id: 19, recipe_id: 1, rating: 4, comment: "Not bad at all. I think it needs another vegetable though.")
+Review.create!(user_id: 3, recipe_id: 2, rating: 2, comment: "Not my favourite...")
+Review.create!(user_id: 20, recipe_id: 2, rating: 1, comment: "I don't think strawberries should be anywhere near soup")
+Review.create!(user_id: 8, recipe_id: 2, rating: 4, comment: "This is so refreshing on a hot day!")
+Review.create!(user_id: 4, recipe_id: 3, rating: 4, comment: "A very good soup for a fall day")
+Review.create!(user_id: 8, recipe_id: 3, rating: 5, comment: "So creamy!")
+Review.create!(user_id: 7, recipe_id: 3, rating: 5, comment: "My new favorite tomato soup!")
+Review.create!(user_id: 18, recipe_id: 3, rating: 4, comment: "My kids love this one.")
+Review.create!(user_id: 4, recipe_id: 4, rating: 4, comment: "I made this for my GF")
+Review.create!(user_id: 8, recipe_id: 4, rating: 5, comment: "This one is the GOAT")
+Review.create!(user_id: 15, recipe_id: 4, rating: 3, comment: "I don't know about this one. I don't think it has enough substance")
+Review.create!(user_id: 16, recipe_id: 4, rating: 4, comment: "My kids will eat this!")
+Review.create!(user_id: 1, recipe_id: 4, rating: 5, comment: "Good soup")
+Review.create!(user_id: 5, recipe_id: 5, rating: 2, comment: "Not a fan.")
+Review.create!(user_id: 15, recipe_id: 5, rating: 5, comment: "I really love this one")
+Review.create!(user_id: 20, recipe_id: 5, rating: 3, comment: "I found it a bit hard to make.")
+Review.create!(user_id: 1, recipe_id: 6, rating: 5, comment: "Easiest soup ever")
+Review.create!(user_id: 13, recipe_id: 6, rating: 4, comment: "So simple to make!")
+
+puts "Recipes have Reviews!"
 
 puts "Seeding Complete!"
