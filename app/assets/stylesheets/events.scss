@@ -5,13 +5,14 @@
   .body-content {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 80%;
   }
 
   .calendar {
     max-width: 600px;
     height: fit-content;
+    margin: 0px;
   }
 
 }
