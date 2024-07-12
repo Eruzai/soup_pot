@@ -15,23 +15,23 @@
         <% end %>
         <%= event.name %>
       </h2>
-      <h3>
+      <h4>
         <% if event.private == true %>
           This is a private event!
         <% else %>
           This is an open event!
         <% end %>
         <% if !event.attendees.exists?(user_id: current_user.id, attending: true) %>
-          <%= link_to "attendees/accept?user_id=#{current_user.id}&event_id=#{event.id}", method: :patch do %>
-            <%= fa_icon "check lg", text: "Attend Event", class: "green" %>
+          <%= link_to "attendees/accept?user_id=#{current_user.id}&event_id=#{event.id}", method: :patch, class: "attend-event" do %>
+            <%= fa_icon "check", text: "Attend Event" %>
           <% end %>
         <% end %>
-      </h3>
+      </h4>
 
       <% if current_user.id != event.user_id %>
-        <h3 class="event-owner">
+        <h4 class="event-owner">
           Event host: <%= event.user.first_name %> <%= event.user.last_name %>
-        </h3>
+        </h4>
       <% end %>
 
       <p class="event-description">

@@ -5,24 +5,24 @@
       Welcome to our kitchen!
     </h1>
     <h3>
-      What are we creating today?
+      What are we doing today?
     </h3>
   </header>
   <div class="links-container">
 
     <% if current_user %>
       <div class="lets-cook container">
-        <%= link_to 'Events', events_path %>
+        <%= link_to 'Plan an Event', events_path %>
       </div>
     <% end %>
 
     <div class="lets-cook container">
-      <%= link_to 'Lets Cook!', '/recipes' %>
+      <%= link_to 'Find a recipe!', '/recipes' %>
     </div>
 
     <% if current_user %>
       <div class="container">
-        <%= link_to 'My Fridge', items_path %>
+        <%= link_to 'Check my Fridge', items_path %>
       </div>
     <% end %>
   </div>
