@@ -7,7 +7,7 @@
   <% end %>
   
   <% if @avg_rating %>
-    <h2>Average Rating: <%= @avg_rating %>/5</h2>
+    <h2>Average Rating: <%= @avg_rating.round(1) %>/5</h2>
   <% else %>
     <h2>Average Rating: There are no ratings yet!</h2>
   <% end %>
